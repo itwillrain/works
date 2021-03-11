@@ -7,8 +7,6 @@ pull request  を送るようにする。
 
 ## 構成
 
----
-
 - Packages
   - front: フロントアプリケーション
   - admin: 管理側
@@ -19,11 +17,7 @@ pull request  を送るようにする。
 
 ## 環境
 
----
-
 ### Requirement
-
----
 
 - typescript
 - nodenv
@@ -42,13 +36,9 @@ $ npm install -g firebase-tools
 
 ### Mbass
 
----
-
 - Firebase
 
 ### Front
-
----
 
 - Nuxt + composition API
 
@@ -59,23 +49,15 @@ $ npm install -g firebase-tools
 
 ## Lerna
 
----
-
 ```bash
+# すべてのscripts表示
+$ yarn show
 # Lerna set up node_modules すべてのパッケージにnode_modulesを追加する
-$ yarn bootstrap
+$ yarn monorepo:reload
 
-# すべてのパッケージからnode_modulesを削除
-$ yarn clean
-
-# すべてのモジュールからyarn.lockを削除
-$ yarn clean-locks
-
-### 依存関係により以下を意識してほしい
+### yarn addの代わりに書きを使用する
 
 # package追加
-$ npx lerna add package_name 追加するパッケージ --scope @works/functions 依存先
-
 # Alias
 $ yarn lerna:front add package_name
 
@@ -85,27 +67,6 @@ $ yarn lerna:core add package_name
 
 $ yarn lerna:functions add package_name
 
-```
-
-<br />
-
-### Hoistについて
-
----
-
-なにも意識しない場合は、hoist( node_modulesの巻き上げ )されるため、rootのnode_modulesに追加される
-各パッケージで管理が必要な場合は、パッケージ下のpackeage.jsonにnohoistを追加
-
-<br />
-
-```json
-{
-  "workspaces": {
-    "nohoist": [
-      "@works/core",
-    ]
-  }
-}
 ```
 
 <br />
@@ -134,19 +95,5 @@ $ yarn local
 ## Cloud functions deploy with monorepo
 
 <https://jackywxd.medium.com/firebase-setup-for-monorepo-functions-yarn-webpack-45a61e6c14eb>
-
-## Backlog連携
-
-[参考](https://github.com/bicstone/backlog-notify)
-
-コミットメッセージを下記のように追加するとbacklogと連携します。
-※複数タスクには対応していない。
-
-```
-HASEKO_MK-〇〇　修正　#fix
-```
-
-- #fix #fixes #fixed のどれかで処理済み
-- #close #closes #closed のどれかで完了
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
