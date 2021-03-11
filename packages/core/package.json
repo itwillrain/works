@@ -1,0 +1,28 @@
+{
+  "name": "@works/core",
+  "version": "1.0.0",
+  "description": "Core Modules",
+  "author": "Takeshi Matsushita <matsushita@neopa.jp>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "dev": "tsc -w",
+    "postinstall": "npm run build"
+  },
+  "dependencies": {
+    "date-fns": "^2.19.0",
+    "firebase": "^8.2.7",
+    "firebase-admin": "^9.5.0"
+  }
+}

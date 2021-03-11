@@ -1,0 +1,27 @@
+rules_version = "2";
+service cloud.firestore {
+  match /databases/{database}/documents {
+     // ログインユーザー
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    // User認証
+    function isUserAuthenticated(userId) {
+      return request.auth.uid == userId;
+    }
+    match /accounts/{uid} {
+      allow read: if isUserAuthenticated(uid)
+    }
+
+    match /users/{uid} {
+      allow read: if  isAuthenticated()
+    }
+    match /buildings/{buildingId} {
+      allow read: if isAuthenticated()
+      allow create: if isAuthenticated()
+      allow update: if isAuthenticated()
+      allow delete: if isAuthenticated()
+      
+    }
+  }
+}

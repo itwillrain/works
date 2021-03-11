@@ -1,0 +1,42 @@
+{
+	"folders": [
+		{
+			"path": "../packages/front"
+		},
+		{
+			"path": "../packages/admin"
+		},
+		{
+			"path": "../packages/core"
+		},
+		{
+			"path": "../packages/cloud"
+		},
+		{
+			"path": "../packages/cloud/functions"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"emmet.variables": {
+			"lang": "ja"
+		},
+		"editor.formatOnSave": false,
+		"vetur.validation.template": false,
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true,
+			"source.fixAll.markdownlint": true
+		}
+	},
+	"extensions": {
+		"recommendations": [
+				"esbenp.prettier-vscode",
+				"dbaeumer.vscode-eslint",
+				"ms-ceintl.vscode-language-pack-ja",
+				"ics.japanese-proofreading",
+				"mosapride.zenkaku",
+		]
+	}
+}

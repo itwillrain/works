@@ -1,0 +1,29 @@
+{
+  "name": "@works/cloud",
+  "version": "1.0.0",
+  "description": "Firebase cloud",
+  "author": "Takeshi Matsushita <matsushita@neopa.jp>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/cloud.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "deploy:dev": " firebase deploy --only hosting -P dev",
+    "predeploy:dev:hosting:admin": "pushd ../admin && yarn generate:dev && popd",
+    "predeploy:dev:hosting:front": "pushd ../front && yarn generate:dev && popd",
+    "deploy:dev:hosting:admin": " firebase deploy --only hosting:admin -P dev",
+    "deploy:dev:hosting:front": " firebase deploy --only hosting:front -P dev",
+    "deploy:dev:functions": "firebase deploy --only functions -P dev",
+    "start:emu": "firebase emulators:start --import=./data/develop --export-on-exit=./data/develop"
+  },
+  "dependencies": {
+    "firebase-tools": "^9.4.0"
+  }
+}

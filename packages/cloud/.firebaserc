@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "works-dev",
+    "dev": "works-dev"
+  },
+  "targets": {
+    "works-dev": {
+      "hosting": {
+        "front": [
+          "works-dev"
+        ],
+        "admin": [
+          "works-admin"
+        ]
+      }
+    }
+  }
+}

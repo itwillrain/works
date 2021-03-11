@@ -1,0 +1,73 @@
+name: 🚀 Deploy Dev Hosting App
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ develop ]
+    paths: 
+      - "packages/admin/**"
+    
+  pull_request:
+    branches: [ develop ]
+    paths: 
+      - "packages/admin/**"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    name:  🏗 Build!!
+
+    strategy: 
+      matrix: 
+        node-version: [12.x]
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version}}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+        
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build Admin
+        run: yarn generate:dev:admin
+        
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: public
+          path: packages/cloud/public
+          retention-days: 1
+
+  deploy:
+    name: 🍺 Deploy Hosting
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: public
+          path: packages/cloud/public
+
+      - name: Deploy to Firebase Hosting
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:admin --project itwillrain-portfolio
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: ./packages/cloud
