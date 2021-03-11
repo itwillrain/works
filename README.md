@@ -1,10 +1,5 @@
 # Nuxt firebase Monorepo
 
-## GitFlow
-
-mainブランチは直接マージしない
-pull request  を送るようにする。
-
 ## 構成
 
 - Packages
@@ -55,7 +50,7 @@ $ yarn show
 # Lerna set up node_modules すべてのパッケージにnode_modulesを追加する
 $ yarn monorepo:reload
 
-### yarn addの代わりに書きを使用する
+### yarn addの代わりに下記を使用する
 
 # package追加
 # Alias
