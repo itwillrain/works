@@ -1,10 +1,6 @@
 import { useAsync, ref } from '@nuxtjs/composition-api'
 import firebase from 'firebase'
-import {
-  DeleteUserDto,
-  RegisterUserDto,
-  IUserWIthBuilding,
-} from '@works/core'
+import { DeleteUserDto, RegisterUserDto } from '@works/core'
 import { User, UserRepo } from '~/domain'
 
 export interface Invitation {
@@ -29,28 +25,6 @@ export const useUsers = () => {
   }
   useAsync(async () => (users.value = await fetchUsers()))
   return { users, fetchUsers }
-}
-
-/**
- * UsersWithBuilding
- * @returns
- */
-export const useUsersWithBuilding = () => {
-  const userRepo = new UserRepo(firebase.firestore())
-  const usersWithBuilding = ref<IUserWIthBuilding[]>([])
-
-  const fetchUsersWithBuilding = async () => {
-    return (usersWithBuilding.value = await userRepo.getUsersWithBuilding())
-  }
-
-  const findByEmail = () => {
-    userRepo.findByEmail()
-  }
-
-  useAsync(
-    async () => (usersWithBuilding.value = await fetchUsersWithBuilding())
-  )
-  return { usersWithBuilding, fetchUsersWithBuilding }
 }
 
 /**

@@ -15,28 +15,27 @@ export default {
   },
   // rtl: true,
   theme: {
-    options: {
-      customProperties: true,
-    },
     themes: {
       light: {
-        primary: '#4e9abd',
+        background: '#eff3f5',
+        primary: '#464de4',
         accent: colors.grey.darken3,
-        secondary: '#ebc000',
+        secondary: '#3a3f51',
         info: colors.teal.lighten1,
         warning: colors.amber.base,
         error: colors.deepOrange.accent4,
         success: '#4e9abd',
       },
       dark: {
-        primary: '#4e9abd',
+        primary: '#464de4',
         accent: colors.grey.darken3,
-        secondary: '#ebc000',
+        secondary: '#dfe8fb',
         info: colors.teal.lighten1,
         warning: colors.amber.base,
         error: colors.deepOrange.accent4,
         success: '#4e9abd',
       },
     },
+    options: { customProperties: true },
   },
 }

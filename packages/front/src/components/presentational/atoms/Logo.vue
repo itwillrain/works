@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.logo">Works</div>
+  <div :class="$style.logo">it will rain</div>
 </template>
 <style lang="scss" module>
 .logo {

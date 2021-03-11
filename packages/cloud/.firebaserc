@@ -1,7 +1,6 @@
 {
   "projects": {
-    "default": "works-dev",
-    "dev": "works-dev"
+    "default": "itwillrain-portfolio",
   },
   "targets": {
     "works-dev": {

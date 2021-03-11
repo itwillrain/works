@@ -27,7 +27,7 @@
     "deploy:dev:functions": "lerna run --scope @works/cloud deploy:dev:functions --stream",
     "build:core": "lerna run --scope @works/core build",
     "build:all": "npx lerna run build",
-    "start:emu": "cd ./packages/cloud && yarn start:emu",
+    "start:emu": "cd ./packages/cloud && yarn start:emu --project itwillrain-portfolio",
     "local": "yarn start:emu & yarn dev",
     "lerna:front": "lerna --scope @works/front",
     "lerna:admin": "lerna --scope @works/admin",

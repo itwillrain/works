@@ -7,21 +7,18 @@ import {
 } from '@nuxtjs/composition-api'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import { AccountRepo, Account } from '~/domain/'
-import { CurrentUser } from '~/compositions/account'
+import { CurrentUser } from '~/compositions/auth'
 
 export default defineNuxtPlugin(async (_ctx, inject) => {
-  const currentUser = ref<Account | null>(null)
+  const currentUser = ref<firebase.User | null>(null)
   inject('currentUser', currentUser)
 
   const unsubscribe: () => void = await new Promise((resolve) => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
         currentUser.value = null
       } else {
-        const accountRepo = new AccountRepo(firebase.firestore())
-        const account = await accountRepo.getAccount(user.uid)
-        currentUser.value = account ?? null
+        currentUser.value = user
       }
       resolve(unsubscribe)
     })

@@ -2,23 +2,55 @@
   <v-container class="fill-height">
     <v-row justify="center">
       <v-col cols="12" sm="6" md="4">
-        <v-form v-model="valid" @submit.prevent="submit">
-          <v-row no-gutters>
-            <v-col cols="12">
-              <v-text-field v-model.trim="email" label="Email" />
-            </v-col>
-            <v-col cols="12">
-              <v-text-field v-model.trim="password" label="Password" />
-            </v-col>
-            <v-col cols="12">
-              <v-btn class="pl-0 mb-3" text left :to="{ name: 'password' }">パスワードをお忘れの方</v-btn>
-            </v-col>
-
-            <v-col>
-              <v-btn type="submit" depressed>login</v-btn>
-            </v-col>
-          </v-row>
-        </v-form>
+        <v-card>
+          <v-card-text>
+            <p-a-logo />
+            <v-form v-model="isValid" @submit.prevent="submit">
+              <v-row no-gutters>
+                <v-col cols="12">
+                  <v-text-field
+                    v-model.trim="email"
+                    dense
+                    :rules="[rules.required, rules.email]"
+                    outlined
+                    label="Email"
+                  />
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field
+                    v-model.trim="password"
+                    :rules="[rules.required]"
+                    :type="isVisible ? 'text' : 'password'"
+                    outlined
+                    dense
+                    label="Password"
+                    :append-icon="isVisible ? 'mdi-eye' : 'mdi-eye-off'"
+                    @click:append="isVisible = !isVisible"
+                  />
+                </v-col>
+                <v-col cols="12">
+                  <v-checkbox
+                    v-model="rememberMe"
+                    label="Remember Me"
+                    class="ma-0 pa-0"
+                  >
+                  </v-checkbox>
+                </v-col>
+                <v-col>
+                  <v-btn
+                    type="submit"
+                    depressed
+                    block
+                    color="primary"
+                    :disabled="!isValid"
+                  >
+                    login
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-form>
+          </v-card-text>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -29,31 +61,44 @@ import {
   reactive,
   toRefs,
   ref,
-  useContext,
+  useRouter,
 } from '@nuxtjs/composition-api'
-import { AUTH_ERRORS, DEFAULT_ERROR_MESSAGE } from '@works/core'
-import { signIn } from '~/compositions/account'
+import { RULES, AUTH_ERRORS, DEFAULT_ERROR_MESSAGE } from '@works/core'
+import firebase from 'firebase/app'
+import { signIn } from '~/compositions/auth'
 import { setLayout } from '~/services/constants/pages'
 import { useSnackbarMessage } from '~/compositions/snackbar'
+import 'firebase/auth'
 
 export default defineComponent({
   components: {},
   layout: ({ route }) => setLayout(route),
-  props: {},
   setup() {
-    const valid = ref<boolean>(false)
-    const { app } = useContext()
+    const isValid = ref<boolean>(false)
+    const isVisible = ref<boolean>(false)
+    const router = useRouter()
     const { setMessage } = useSnackbarMessage()
 
-    const input = reactive<{ email: string; password: string }>({
+    const input = reactive<{
+      email: string
+      password: string
+      rememberMe: boolean
+    }>({
       email: '',
       password: '',
+      rememberMe: false,
     })
-
+    /**
+     * ログイン
+     */
     const submit = async () => {
       try {
-        await signIn(input.email, input.password)
-        app.router!.push({ name: 'index' })
+        const persistence: keyof typeof firebase.auth.Auth.Persistence = input.rememberMe
+          ? 'LOCAL'
+          : 'SESSION'
+
+        await signIn(input.email, input.password, persistence)
+        router.push({ name: 'index' })
       } catch (e) {
         if (e.code) {
           const errorMessage =
@@ -64,8 +109,10 @@ export default defineComponent({
     }
 
     return {
-      valid,
       ...toRefs(input),
+      isValid,
+      isVisible,
+      rules: RULES,
       submit,
     }
   },

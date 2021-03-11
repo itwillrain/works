@@ -17,8 +17,7 @@ const config: NuxtConfig = {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s  TITLE',
-    title: 'TITLE',
+    titleTemplate: '%s  it will rain',
     htmlAttrs: {
       lang: 'ja',
     },
@@ -39,8 +38,10 @@ const config: NuxtConfig = {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
     '~/components',
+    { path: '~/components/presentational/atoms', prefix: 'p-a' },
     { path: '~/components/presentational/molecules', prefix: 'p-m' },
-    { path: '~/components/layout', prefix: 'l' },
+    { path: '~/components/container', prefix: 'c' },
+    { path: '~/components/container/shared', prefix: 'c-s' },
   ],
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [

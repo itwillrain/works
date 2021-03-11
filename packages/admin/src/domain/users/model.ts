@@ -1,6 +1,5 @@
-import { IUser, Role, Room, IUserWIthBuilding } from '@works/core'
+import { IUser, Role, Room } from '@works/core'
 import firestore from '@firebase/firestore-types'
-import { BuildingRepo } from '../buildings/repo'
 
 /**
  * User Class
@@ -45,30 +44,6 @@ export class User implements IUser {
       manageBuildings: data.manageBuildings ?? [],
       updatedAt: data.updatedAt ?? null,
       createdAt: data.createdAt ?? null,
-    }
-  }
-
-  /**
-   * merge Building
-   * @param {firestore.FirebaseFirestore} db
-   * @returns {Promise<IUserWIthBuilding>}
-   */
-  async toUserWIthBuilding(
-    db: firestore.FirebaseFirestore
-  ): Promise<IUserWIthBuilding> {
-    const buildingRepo = new BuildingRepo(db)
-    const building = this.building.ref
-      ? await buildingRepo.getById(this.building.ref.id)
-      : undefined
-    return {
-      id: this.id,
-      room: this.room,
-      building: { name: building?.name ?? '' },
-      role: this.role,
-      email: this.email,
-      manageBuildings: this.manageBuildings,
-      updatedAt: this.updatedAt,
-      createdAt: this.createdAt,
     }
   }
 
