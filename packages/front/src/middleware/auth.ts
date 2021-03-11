@@ -4,15 +4,17 @@ import {
   isUnauthenticatedOnly,
 } from '../services/constants/pages'
 
-export default defineNuxtMiddleware(({ app, route, redirect }) => {
+export default defineNuxtMiddleware((ctx) => {
+  const { redirect, route, $currentUser } = ctx
   console.table(route)
-  const isLogin = app.$firebase.auth().currentUser
+  const isLogin = !!$currentUser.value
+  console.log(isLogin)
 
   // Routing
   if (isLogin) {
     // Loginしている場合
     if (isUnauthenticatedOnly(route)) {
-      return redirect({ name: 'projects' })
+      return redirect({ name: 'top' })
     }
     // Loginしていない場合
   } else if (isAuthenticatedOnly(route)) {

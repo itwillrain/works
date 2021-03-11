@@ -8,32 +8,7 @@ export interface Page {
   query?: Dictionary<string | (string | null)[]>
   params?: Dictionary<string>
 }
-const buildingId = ''
 export const PAGES: Page[] = [
-  {
-    name: 'development',
-    title: '開発者専用',
-    role: 'unauthenticated',
-    layout: 'default',
-  },
-  {
-    name: 'login',
-    title: 'ログイン',
-    role: 'unauthenticated',
-    layout: 'default',
-  },
-  {
-    name: 'password',
-    title: 'パスワードリセット',
-    role: 'unauthenticated',
-    layout: 'default',
-  },
-  {
-    name: 'password-done',
-    title: 'パスワードリセット完了',
-    role: 'unauthenticated',
-    layout: 'default',
-  },
   {
     name: 'index',
     title: 'TOP',
@@ -41,60 +16,10 @@ export const PAGES: Page[] = [
     layout: 'default',
   },
   {
-    name: 'buildingId',
-    title: 'HOME',
-    role: 'authenticated',
-    layout: 'default',
-    params: { buildingId },
-  },
-  {
-    name: 'buildingId-account',
-    title: 'ICカード管理',
-    role: 'authenticated',
-    layout: 'default',
-    params: { buildingId },
-  },
-  {
-    name: 'buildingId-facilities',
-    title: '共有部分利用',
-    role: 'authenticated',
-    layout: 'default',
-    params: { buildingId },
-  },
-  {
-    name: 'buildingId-settings',
-    title: '設定',
-    role: 'authenticated',
-    layout: 'default',
-    params: { buildingId },
-  },
-  {
-    name: 'buildingId-settings-password',
-    title: 'パスワード変更',
-    role: 'authenticated',
-    layout: 'default',
-    params: { buildingId },
-  },
-  {
-    name: 'buildingId-settings-password-done',
-    title: 'パスワード変更完了',
-    role: 'authenticated',
-    layout: 'default',
-    params: { buildingId },
-  },
-  {
-    name: 'buildingId-settings-mail',
-    title: 'メールアドレス変更',
-    role: 'authenticated',
-    layout: 'default',
-    params: { buildingId },
-  },
-  {
-    name: 'buildingId-settings-mail-done',
-    title: 'メールアドレス変更完了',
-    role: 'authenticated',
-    layout: 'default',
-    params: { buildingId },
+    name: 'login',
+    title: 'ログイン',
+    role: 'unauthenticated',
+    layout: 'auth',
   },
 ]
 
