@@ -1,5 +1,7 @@
 import { NuxtConfig } from '@nuxt/types'
 const environment = process.env.NODE_ENV
+const desc = 'It will rain(Takeshi Matsushita)のPortfolioサイト'
+
 const envSet = require(`./src/config/env.${environment}.ts`)
 const config: NuxtConfig = {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -11,7 +13,7 @@ const config: NuxtConfig = {
 
   publicRuntimeConfig: {
     ENVIRONMENT: environment,
-    DESCRIPTION: '説明文',
+    DESCRIPTION: desc,
     ...envSet,
   },
 
@@ -23,8 +25,28 @@ const config: NuxtConfig = {
     },
     meta: [
       { charset: 'utf-8' },
+      {
+        hid: 'robots',
+        property: 'robots',
+        content: 'noindex, nofollow, noarchive',
+      },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'it will rain',
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: desc,
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: `${envSet.BASE_URL}/ogp.png`,
+      },
+      { hid: 'description', name: 'description', content: desc },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
