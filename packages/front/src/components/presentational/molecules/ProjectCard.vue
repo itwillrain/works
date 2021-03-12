@@ -3,7 +3,7 @@
     class="mx-auto"
     max-width="400"
     nuxt
-    :to="{ name: 'projects-id', params: { id: project.id } }"
+    :to="{ name: 'works-id', params: { id: project.id } }"
   >
     <v-img
       class="white--text align-end"

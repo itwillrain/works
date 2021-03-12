@@ -131,6 +131,9 @@ export default defineComponent({
       list-style: none;
       margin-right: 1rem;
     }
+    a {
+      text-decoration: none;
+    }
   }
 }
 </style>

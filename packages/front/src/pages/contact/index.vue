@@ -1,9 +1,10 @@
 <template>
-  <v-container class="py-10">
+  <v-container class="py-10 fill-height">
     <v-row justify="center">
-      <h3>お問い合わせ</h3>
-    </v-row>
-    <v-row justify="center">
+      <v-col cols="12" md="8">
+        <h2 class="text-center">お問い合わせ</h2>
+        <p>お問い合わせありがとうございます。</p>
+      </v-col>
       <v-col cols="12" md="8">
         <v-form ref="form" v-model="isValid" @submit.prevent="submit">
           <v-row>
@@ -12,7 +13,6 @@
                 v-model="company.name"
                 label="会社名"
                 outlined
-                dense
               ></v-text-field>
             </v-col>
             <v-col cols="12" class="py-0">
@@ -21,7 +21,6 @@
                 label="電話番号"
                 :rules="[rules.phone]"
                 outlined
-                dense
               ></v-text-field>
             </v-col>
             <v-col cols="12" class="py-0">
@@ -31,7 +30,6 @@
                 :rules="[rules.max(200, content), rules.required]"
                 label="お問い合わせ内容"
                 outlined
-                dense
               ></v-textarea>
             </v-col>
           </v-row>

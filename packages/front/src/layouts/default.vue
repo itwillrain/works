@@ -5,6 +5,7 @@
       <nuxt />
       <p-m-base-snackbar />
     </v-main>
+    <c-s-the-footer />
   </v-app>
 </template>
 

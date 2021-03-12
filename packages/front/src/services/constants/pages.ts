@@ -17,14 +17,14 @@ export const PAGES: Page[] = [
     layout: 'default',
   },
   {
-    name: 'projects',
+    name: 'works',
     title: 'Works',
     role: 'authenticated',
     layout: 'default',
     showHeaderMenu: true,
   },
   {
-    name: 'projects-id',
+    name: 'works-id',
     title: 'Works Detail',
     role: 'authenticated',
     layout: 'default',

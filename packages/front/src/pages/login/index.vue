@@ -4,10 +4,14 @@
       <v-col cols="12" sm="6" md="4">
         <v-card>
           <v-card-text>
-            <p-a-logo />
+            <v-row justify="center">
+              <v-col>
+                <p-a-logo />
+              </v-col>
+            </v-row>
             <v-form v-model="isValid" @submit.prevent="submit">
-              <v-row no-gutters>
-                <v-col cols="12">
+              <v-row>
+                <v-col cols="12" class="pb-0">
                   <v-text-field
                     v-model.trim="email"
                     dense
@@ -16,7 +20,7 @@
                     label="Email"
                   />
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" class="py-0">
                   <v-text-field
                     v-model.trim="password"
                     :rules="[rules.required]"
@@ -28,7 +32,7 @@
                     @click:append="isVisible = !isVisible"
                   />
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" class="py-0">
                   <v-checkbox
                     v-model="rememberMe"
                     label="Remember Me"
@@ -36,7 +40,7 @@
                   >
                   </v-checkbox>
                 </v-col>
-                <v-col>
+                <v-col class="py-0">
                   <v-btn
                     type="submit"
                     depressed

@@ -62,11 +62,13 @@ export default defineComponent({
   &__light {
     width: 140px;
     fill: var(--v-primary-base);
+    margin: 0 auto;
   }
 
   &__dark {
     width: 140px;
     fill: var(--v-secondary-base);
+    margin: 0 auto;
   }
 }
 </style>
