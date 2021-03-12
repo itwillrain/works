@@ -1,6 +1,7 @@
 <template>
   <v-card
-    class="mx-auto"
+    class="mx-auto fill-height"
+    :class="$style.card__outter"
     max-width="400"
     nuxt
     :to="{ name: 'works-id', params: { id: project.id } }"
@@ -21,8 +22,7 @@
     </v-img>
 
     <v-card-subtitle class="pb-0"> {{ project.name }}</v-card-subtitle>
-
-    <v-card-actions class="justify-end">
+    <v-card-actions :class="$style.card__actions">
       <v-btn color="primary" text>Detail</v-btn>
     </v-card-actions>
   </v-card>
@@ -41,3 +41,16 @@ export default defineComponent({
   setup() {},
 })
 </script>
+<style lang="scss" module>
+.card {
+  &__outter {
+    position: relative;
+    padding-bottom: 50px;
+  }
+  &__actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+</style>
