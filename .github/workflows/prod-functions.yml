@@ -1,13 +1,12 @@
-name: 🚀 Deploy Dev Firestore Rule and indexies
+name: 🚀 Deploy Dev Functions App
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ develop ]
+    branches: [ main ]
     paths: 
-     - "**/firestore.indexes.json"
-     - "**/firestore.rules"
+     - "packages/cloud/functions/**"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -16,16 +15,24 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   deploy:
-    name: 🍺 Deploy Firestore Rule and indexes
+    name: 🍺 Deploy Functions
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
-        
-      - name: Deploy to Firestore
+        uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Install Dependencies
+        run: npx lerna bootstrap
+
+      - name: Deploy to Cloud Functions
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only firestore --project itwillrain-portfolio-dev
+          args: deploy --only functions --project itwillrain-portfolio
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           PROJECT_PATH: ./packages/cloud
