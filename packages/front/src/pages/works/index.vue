@@ -18,6 +18,9 @@
             <p-m-project-card :project="project"></p-m-project-card>
           </v-col>
         </v-row>
+        <v-row else>
+          <p>現在登録されていません。</p>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
