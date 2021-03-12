@@ -21,19 +21,20 @@
     </ul>
 
     <v-spacer></v-spacer>
+
     <v-btn
       text
       icon
       small
       class="mr-2"
       @click="
-        $colorMode.preference === 'dark'
+        $colorMode.value === 'dark'
           ? ($colorMode.preference = 'light')
           : ($colorMode.preference = 'dark')
       "
     >
       <v-icon>{{
-        $colorMode.preference === 'dark'
+        $colorMode.value === 'dark'
           ? 'mdi-brightness-2'
           : 'mdi-white-balance-sunny'
       }}</v-icon>
@@ -83,6 +84,7 @@ import {
   useContext,
   useRouter,
   watch,
+  watchEffect,
 } from '@nuxtjs/composition-api'
 import { initialUpperCase } from '@works/core'
 import { signOut } from '~/compositions/auth'
@@ -99,12 +101,10 @@ export default defineComponent({
     })
     const { $colorMode, $vuetify } = useContext()
     const router = useRouter()
-    watch(
-      () => $colorMode.value,
-      () => {
-        $vuetify.theme.dark = $colorMode.value === 'dark'
-      }
-    )
+
+    watchEffect(() => {
+      $vuetify.theme.dark = $colorMode.value === 'dark'
+    })
     /**
      * ログアウト
      */
