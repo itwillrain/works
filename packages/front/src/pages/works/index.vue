@@ -1,5 +1,5 @@
 <template>
-  <v-container class="fill-height">
+  <v-container>
     <v-row v-if="pickupProjects">
       <v-col>
         <v-row>
