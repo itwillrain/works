@@ -83,7 +83,16 @@ const config: NuxtConfig = {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    terser: {
+      sourceMap: true,
+      terserOptions: {
+        compress: {
+          drop_console: process.env.NODE_ENV === 'production',
+        },
+      },
+    },
+  },
   generate: {
     dir: '../cloud/public/front',
   },
