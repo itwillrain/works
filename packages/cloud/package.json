@@ -16,11 +16,9 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "deploy:dev": " firebase deploy --only hosting -P dev",
-    "predeploy:dev:hosting:admin": "pushd ../admin && yarn generate:dev && popd",
-    "predeploy:dev:hosting:front": "pushd ../front && yarn generate:dev && popd",
-    "deploy:dev:hosting:admin": " firebase deploy --only hosting:admin -P dev",
-    "deploy:dev:hosting:front": " firebase deploy --only hosting:front -P dev",
-    "deploy:dev:functions": "firebase deploy --only functions -P dev",
+    "predeploy:prod:hosting:front": "pushd ../front && yarn generate && popd",
+    "deploy:prod:hosting:front": " firebase deploy --only hosting:front -P default",
+    "deploy:prod:functions": "firebase deploy --only functions -P dev",
     "start:emu": "firebase emulators:start --import=./data/develop --export-on-exit=./data/develop"
   },
   "dependencies": {

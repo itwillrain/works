@@ -3,7 +3,7 @@
     "default": "itwillrain-portfolio"
   },
   "targets": {
-    "works-dev": {
+    "itwillrain-portfolio": {
       "hosting": {
         "front": [
           "itwillrain-portfolio"

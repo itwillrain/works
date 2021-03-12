@@ -101,8 +101,7 @@ export default defineComponent({
     const router = useRouter()
     watch(
       () => $colorMode.value,
-      (v, old) => {
-        console.log(v, old)
+      () => {
         $vuetify.theme.dark = $colorMode.value === 'dark'
       }
     )
