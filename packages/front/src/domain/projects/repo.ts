@@ -43,7 +43,7 @@ export class ProjectRepo extends BaseRepo {
    * Project 一覧取得
    * @returns { Promise<Project[]>}
    */
-  public getPickupProjects(limit = 3): Promise<Project[]> {
+  public getPickupProjects(limit = 5): Promise<Project[]> {
     const query = this.ref
       .orderBy('createdAt', 'desc')
       .where('isPickup', '==', true)
