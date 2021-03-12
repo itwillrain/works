@@ -4,6 +4,8 @@
       <v-col cols="12" md="8">
         <h2 class="text-center">About</h2>
       </v-col>
+    </v-row>
+    <v-row>
       <v-col>
         <v-row>
           <!-- Personal info -->
