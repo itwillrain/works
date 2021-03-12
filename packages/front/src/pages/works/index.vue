@@ -1,6 +1,6 @@
 <template>
   <v-container class="fill-height">
-    <v-row>
+    <v-row v-if="pickupProjects">
       <v-col>
         <v-row>
           <v-col cols="12">
@@ -18,7 +18,6 @@
             <p-m-project-card :project="project"></p-m-project-card>
           </v-col>
         </v-row>
-        <p v-else>登録されているプロジェクトはありません。</p>
       </v-col>
     </v-row>
   </v-container>

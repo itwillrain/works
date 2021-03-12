@@ -83,7 +83,6 @@ import {
   toRefs,
   useContext,
   useRouter,
-  watch,
   watchEffect,
 } from '@nuxtjs/composition-api'
 import { initialUpperCase } from '@works/core'
