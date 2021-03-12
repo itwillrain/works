@@ -7,7 +7,15 @@
         </v-col>
         <v-col cols="12" class="pb-0">
           <a :href="project.url" target="_blank" rel="noopener">
-            <v-img :src="project.displayImage"></v-img>
+            <v-img :src="project.displayImage" :aspect-ratio="16 / 9">
+              <template #placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular
+                    indeterminate
+                    color="grey lighten-5"
+                  ></v-progress-circular>
+                </v-row> </template
+            ></v-img>
           </a>
         </v-col>
       </v-row>
@@ -23,7 +31,7 @@
             <time> {{ formatDate(project.endAt) }}</time>
           </v-col>
         </v-row>
-        <v-row>
+        <v-row v-if="project && project.skills.length">
           <v-col>
             <h3>使用したスキル・ツール</h3>
             <div>
