@@ -87,7 +87,14 @@ const config: NuxtConfig = {
     '@nuxtjs/axios',
     '@nuxtjs/color-mode',
     '@nuxt/content',
+    'nuxt-webfontloader',
   ],
+
+  webfontloader: {
+    google: {
+      families: ['Montserrat:100,200,500,700', 'Noto+Sans+JP:400,700'],
+    },
+  },
 
   router: {
     trailingSlash: true,
