@@ -17,7 +17,10 @@ export default {
   theme: {
     themes: {
       light: {
-        background: '#ffffff',
+        background: {
+          base: '#ffffff',
+          darken1: '#f9f9fb',
+        },
         primary: '#464de4',
         accent: colors.grey.darken3,
         secondary: '#3a3f51',
@@ -27,7 +30,12 @@ export default {
         success: '#4e9abd',
       },
       dark: {
-        primary: '#464de4',
+        background: {
+          base: '#111827',
+          darken1: '#0d1320',
+          lighten1: '#1f2937',
+        },
+        primary: '#06b6d4',
         accent: colors.grey.darken3,
         secondary: '#dfe8fb',
         info: colors.teal.lighten1,

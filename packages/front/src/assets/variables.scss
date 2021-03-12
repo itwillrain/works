@@ -8,6 +8,7 @@ $menu-content-elevation: 3;
 $material-light: (
   'cards': white,
   'background': var(--v-background-base),
+  'app-bar': transparent,
   'text': (
     'primary': var(--v-secondary-base),
     'secondary': '#8c8c8c',
@@ -15,7 +16,14 @@ $material-light: (
 );
 
 $material-dark: (
+  'cards': var(--v-background-darken1),
   'navigation-drawer': var(--v-secondary-base),
+  'background': var(--v-background-base),
+  'app-bar':  transparent,
 );
 
 $body-font-family: 'Noto Sans JP', sans-serif;
+
+body div.v-application .v-card {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05) !important;
+}
