@@ -33,7 +33,12 @@ const config: NuxtConfig = {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/firebase', '@plugins/firebase-auth', '@plugins/message'],
+  plugins: [
+    '@/plugins/firebase',
+    '@plugins/firebase-auth',
+    '@plugins/message',
+    '@plugins/dark-mode',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
@@ -58,6 +63,7 @@ const config: NuxtConfig = {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/color-mode',
   ],
 
   router: {
