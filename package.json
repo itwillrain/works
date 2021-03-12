@@ -17,7 +17,6 @@
     "preinstall": "npx only-allow yarn",
     "dev": "run-p dev:* ",
     "dev:front": "pushd ./packages/front && yarn dev && popd",
-    "dev:admin": "pushd ./packages/admin && yarn dev && popd",
     "dev:core": "lerna run --scope @works/core dev --parallel",
     "dev:functions": "lerna run --scope @works/functions dev --parallel",
     "generate:dev:front": "lerna run --scope @works/front generate:dev --stream",
