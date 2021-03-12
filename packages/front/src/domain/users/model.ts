@@ -1,4 +1,4 @@
-import { IUser, Role, Room } from '@works/core'
+import { IUser } from '@works/core'
 import firestore from '@firebase/firestore-types'
 
 /**
@@ -9,14 +9,7 @@ import firestore from '@firebase/firestore-types'
  * @implements {IUser}
  */
 export class User implements IUser {
-  readonly room!: Room
-  building!: {
-    ref: firestore.DocumentReference | null
-  }
-
-  readonly role!: Role
   readonly email!: string
-  readonly manageBuildings!: firestore.DocumentReference[]
   readonly createdAt!: firestore.Timestamp
   readonly updatedAt!: firestore.Timestamp
 
@@ -36,11 +29,7 @@ export class User implements IUser {
    */
   map(data: Partial<IUser>): IUser {
     return {
-      room: data.room ?? { name: '' },
-      building: data.building ?? { ref: null },
-      role: data.role ?? 'user',
       email: data.email ?? '',
-      manageBuildings: data.manageBuildings ?? [],
       updatedAt: data.updatedAt ?? null,
       createdAt: data.createdAt ?? null,
     }
@@ -56,11 +45,7 @@ export class User implements IUser {
   static readonly converter: firestore.FirestoreDataConverter<User> = {
     toFirestore(data: User): IUser {
       return {
-        room: data.room,
-        building: data.building,
-        role: data.role,
         email: data.email,
-        manageBuildings: data.manageBuildings,
         updatedAt: data.updatedAt,
         createdAt: data.createdAt,
       }
