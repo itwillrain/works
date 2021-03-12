@@ -7,6 +7,7 @@ export interface Page {
   layout: string
   query?: Dictionary<string | (string | null)[]>
   params?: Dictionary<string>
+  showHeaderMenu?: boolean
 }
 export const PAGES: Page[] = [
   {
@@ -14,6 +15,39 @@ export const PAGES: Page[] = [
     title: 'TOP',
     role: 'authenticated',
     layout: 'default',
+  },
+  {
+    name: 'projects',
+    title: 'Works',
+    role: 'authenticated',
+    layout: 'default',
+    showHeaderMenu: true,
+  },
+  {
+    name: 'projects-id',
+    title: 'Works Detail',
+    role: 'authenticated',
+    layout: 'default',
+  },
+  {
+    name: 'about',
+    title: 'About',
+    role: 'authenticated',
+    layout: 'default',
+    showHeaderMenu: true,
+  },
+  {
+    name: 'contact',
+    title: 'Contact',
+    role: 'authenticated',
+    layout: 'default',
+    showHeaderMenu: true,
+  },
+  {
+    name: 'login',
+    title: 'ログイン',
+    role: 'unauthenticated',
+    layout: 'auth',
   },
   {
     name: 'login',
@@ -108,4 +142,12 @@ export function setLayout(route: Route): string {
  */
 export function getPageTitle(route: Route) {
   return PAGES.find((page) => page.name === route.name)?.title ?? ''
+}
+
+/**
+ * Headerに表示するページを抽出
+ * @return {Page[]}
+ */
+export function headerMenu(): Page[] {
+  return PAGES.filter((page) => page.showHeaderMenu)
 }
