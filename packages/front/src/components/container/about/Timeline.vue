@@ -30,12 +30,12 @@ export default defineComponent({
     const years = ref<Timeline[]>([
       {
         color: 'cyan',
-        year: 'May 2004',
+        year: 'March 2004',
         title: '奈良市立一条高等学校普通科卒業',
       },
       {
         color: 'cyan',
-        year: 'May 2008',
+        year: 'March 2008',
         title: '大阪芸術大学デザイン学科卒業',
       },
       {
