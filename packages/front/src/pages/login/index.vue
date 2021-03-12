@@ -40,7 +40,7 @@
                   >
                   </v-checkbox>
                 </v-col>
-                <v-col class="py-0">
+                <v-col>
                   <v-btn
                     type="submit"
                     depressed
