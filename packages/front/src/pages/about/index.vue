@@ -6,64 +6,25 @@
       </v-col>
       <v-col>
         <v-row>
+          <!-- Personal info -->
           <v-col cols="12" md="4">
-            <v-card max-width="375" class="mx-auto">
-              <v-img
-                src="https://cdn.vuetifyjs.com/images/lists/ali.png"
-                height="300px"
-                dark
-              >
-              </v-img>
-
-              <v-list two-line>
-                <v-list-item>
-                  <v-list-item-icon>
-                    <v-icon color="primary"> mdi-phone </v-icon>
-                  </v-list-item-icon>
-
-                  <v-list-item-content>
-                    <v-list-item-title>070-4219-3358</v-list-item-title>
-                    <v-list-item-subtitle>Mobile</v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item>
-
-                <v-divider></v-divider>
-
-                <v-list-item>
-                  <v-list-item-icon>
-                    <v-icon color="primary"> mdi-email </v-icon>
-                  </v-list-item-icon>
-
-                  <v-list-item-content>
-                    <v-list-item-title>
-                      info.itwillrain@gmial.com
-                    </v-list-item-title>
-                    <v-list-item-subtitle>Personal</v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item>
-
-                <v-divider></v-divider>
-
-                <v-list-item>
-                  <v-list-item-icon>
-                    <v-icon color="primary"> mdi-map-marker </v-icon>
-                  </v-list-item-icon>
-
-                  <v-list-item-content>
-                    <v-list-item-title>東京都目黒区</v-list-item-title>
-                    <v-list-item-subtitle>目黒本町</v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-card>
+            <c-about-aside />
           </v-col>
-          <v-col cols="12" md="8">
-            <p>
-              大阪にてフリーランスのWeb制作をしております。<br />
-              2006年よりアルバイトにて制作を始める。<br />
-              2007年から5年間大阪市内の制作会社でデザイン・コーディングなどの業務を行う。<br />
-              2012年よりフリーランスへ転向。<br />
-            </p>
+          <!-- Resume -->
+          <v-col v-if="resume" cols="12" md="8">
+            <v-tabs v-model="tab" background-color="transparent" class="mb-4">
+              <v-tab>Profile</v-tab>
+              <v-tab>Life log</v-tab>
+            </v-tabs>
+
+            <v-tabs-items v-model="tab" :class="$style.tab__items">
+              <v-tab-item>
+                <nuxt-content :document="resume" />
+              </v-tab-item>
+              <v-tab-item>
+                <c-about-timeline />
+              </v-tab-item>
+            </v-tabs-items>
           </v-col>
         </v-row>
       </v-col>
@@ -71,10 +32,24 @@
   </v-container>
 </template>
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, ref } from '@nuxtjs/composition-api'
+import { useResume } from '~/compositions/resume'
 export default defineComponent({
-  components: {},
-  props: {},
-  setup() {},
+  setup() {
+    const { resume } = useResume('resume/index')
+    const tab = ref<any>(null)
+    return {
+      resume,
+      tab,
+    }
+  },
+  head: {},
 })
 </script>
+<style lang="scss" module>
+.tab {
+  &__items {
+    background-color: transparent !important;
+  }
+}
+</style>
