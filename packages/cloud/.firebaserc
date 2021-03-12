@@ -1,15 +1,12 @@
 {
   "projects": {
-    "default": "itwillrain-portfolio",
+    "default": "itwillrain-portfolio"
   },
   "targets": {
     "works-dev": {
       "hosting": {
         "front": [
-          "works-dev"
-        ],
-        "admin": [
-          "works-admin"
+          "itwillrain-portfolio"
         ]
       }
     }
