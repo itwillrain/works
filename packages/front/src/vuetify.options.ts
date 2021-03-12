@@ -1,5 +1,6 @@
 import ja from 'vuetify/src/locale/ja'
 import colors from 'vuetify/es5/util/colors'
+const primary = '#06b6d4'
 export default {
   breakpoint: {
     thresholds: {
@@ -21,7 +22,7 @@ export default {
           base: '#ffffff',
           darken1: '#f9f9fb',
         },
-        primary: '#464de4',
+        primary,
         accent: colors.grey.darken3,
         secondary: '#3a3f51',
         info: colors.teal.lighten1,
@@ -35,7 +36,7 @@ export default {
           darken1: '#0d1320',
           lighten1: '#1f2937',
         },
-        primary: '#06b6d4',
+        primary,
         accent: colors.grey.darken3,
         secondary: '#dfe8fb',
         info: colors.teal.lighten1,
