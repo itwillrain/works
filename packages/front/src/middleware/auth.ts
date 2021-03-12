@@ -8,7 +8,6 @@ export default defineNuxtMiddleware((ctx) => {
   const { redirect, route, $currentUser } = ctx
   console.table(route)
   const isLogin = !!$currentUser.value
-  console.log(isLogin)
 
   // Routing
   if (isLogin) {

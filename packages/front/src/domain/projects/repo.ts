@@ -38,4 +38,16 @@ export class ProjectRepo extends BaseRepo {
     const query = this.ref.orderBy('createdAt', 'desc')
     return this.findByQuery(query, Project.converter)
   }
+
+  /**
+   * Project 一覧取得
+   * @returns { Promise<Project[]>}
+   */
+  public getPickupProjects(limit = 3): Promise<Project[]> {
+    const query = this.ref
+      .orderBy('createdAt', 'desc')
+      .where('isPickup', '==', true)
+      .limit(limit)
+    return this.findByQuery(query, Project.converter)
+  }
 }

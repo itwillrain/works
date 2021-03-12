@@ -1,4 +1,4 @@
-import { IProject } from '@works/core'
+import { IProject, Timestamp } from '@works/core'
 import firestore from '@firebase/firestore-types'
 
 /**
@@ -12,6 +12,12 @@ export class Project implements IProject {
   readonly id!: string
   readonly name!: string
   readonly url!: string
+  readonly isPickup!: boolean
+  readonly skills!: string[]
+  readonly desc!: string
+  readonly displayImage!: string
+  readonly startAt!: Timestamp
+  readonly endAt!: Timestamp
   readonly createdAt!: firestore.Timestamp
   readonly updatedAt!: firestore.Timestamp
 
@@ -33,7 +39,13 @@ export class Project implements IProject {
     return {
       id: data.id,
       name: data.name ?? '',
+      isPickup: data.isPickup ?? false,
       url: data.url ?? '',
+      skills: data.skills ?? [],
+      desc: data.desc ?? '',
+      displayImage: data.displayImage ?? '',
+      startAt: data.startAt ?? null,
+      endAt: data.endAt ?? null,
       updatedAt: data.updatedAt ?? null,
       createdAt: data.createdAt ?? null,
     }
@@ -51,6 +63,12 @@ export class Project implements IProject {
       return {
         name: data.name,
         url: data.url,
+        isPickup: data.isPickup,
+        skills: data.skills,
+        desc: data.desc,
+        displayImage: data.displayImage,
+        startAt: data.startAt,
+        endAt: data.endAt,
         updatedAt: data.updatedAt,
         createdAt: data.createdAt,
       }

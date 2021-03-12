@@ -2,10 +2,12 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 import { Ref } from '@nuxtjs/composition-api'
-import { Account } from '~/domain'
+import { User } from '../domain/users/model'
 export interface InjectedByPlugin {
-  $currentUser: Ref<Account | null>
+  $currentUser: Ref<User | null>
   $firebase: typeof firebase
+  $colorMode: any
+  $vuetify: any
 }
 
 declare module '@nuxt/types' {

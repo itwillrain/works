@@ -86,7 +86,7 @@ export default defineComponent({
     }>({
       email: '',
       password: '',
-      rememberMe: false,
+      rememberMe: true,
     })
     /**
      * ログイン

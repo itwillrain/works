@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <v-row v-if="$currentUser">
+      <v-row v-if="pickupProjects.length">
         <v-col
           v-for="(project, idx) in pickupProjects"
           :key="idx"
@@ -16,27 +16,15 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, ref } from '@nuxtjs/composition-api'
-import { Project } from '~/domain'
+import { defineComponent } from '@nuxtjs/composition-api'
+import { usePickupProjects } from '~/compositions/projects'
 import { setLayout } from '~/services/constants/pages'
 export default defineComponent({
   components: {},
   layout: ({ route }) => setLayout(route),
   props: {},
   setup() {
-    const pickupProjects = ref<Project[]>([])
-    onMounted(
-      () =>
-        (pickupProjects.value = new Array(10).fill(
-          new Project(
-            {
-              name:
-                '映画『過去はいつも新しく、未来はつねに懐かしい　写真家 森山大道』公式サイト',
-            },
-            'aaaa'
-          )
-        ))
-    )
+    const { pickupProjects } = usePickupProjects()
     return {
       pickupProjects,
     }

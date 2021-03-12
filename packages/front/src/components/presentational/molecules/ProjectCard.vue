@@ -7,7 +7,7 @@
   >
     <v-img
       class="white--text align-end"
-      height="200px"
+      height="220px"
       :src="require('@/assets/img/projects/main.png')"
     >
       <v-card-title></v-card-title>
