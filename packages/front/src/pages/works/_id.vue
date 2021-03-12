@@ -72,7 +72,7 @@ export default defineComponent({
 </script>
 <style lang="scss" module>
 .bg {
-  margin-top: -10rem;
+  margin-top: -6rem;
   padding-top: 6rem;
   background-color: var(--v-background-darken1);
 }
