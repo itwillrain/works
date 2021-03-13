@@ -23,7 +23,7 @@
 
     <div :class="$style.bg">
       <v-container>
-        <v-row>
+        <v-row v-if="project.startAt || project.endAt">
           <v-col>
             <h3>期間</h3>
             <time> {{ formatDate(project.startAt) }}</time>
