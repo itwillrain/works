@@ -23,15 +23,17 @@
   </v-container>
 </template>
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api'
 import { usePickupProjects } from '~/compositions/projects'
-import { setLayout } from '~/services/constants/pages'
+import { getPageTitle, setLayout } from '~/services/constants/pages'
 export default defineComponent({
   components: {},
   layout: ({ route }) => setLayout(route),
   props: {},
   setup() {
     const { pickupProjects } = usePickupProjects()
+    const route = useRoute()
+    useMeta(() => ({ title: getPageTitle(route.value) + ' |' }))
     return {
       pickupProjects,
     }

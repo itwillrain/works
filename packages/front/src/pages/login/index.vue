@@ -66,11 +66,18 @@ import {
   toRefs,
   ref,
   useRouter,
+  useMeta,
+  useRoute,
 } from '@nuxtjs/composition-api'
-import { RULES, AUTH_ERRORS, DEFAULT_ERROR_MESSAGE } from '@works/core'
+import {
+  RULES,
+  AUTH_ERRORS,
+  DEFAULT_ERROR_MESSAGE,
+  FixMeAny,
+} from '@works/core'
 import firebase from 'firebase/app'
 import { signIn } from '~/compositions/auth'
-import { setLayout } from '~/services/constants/pages'
+import { getPageTitle, setLayout } from '~/services/constants/pages'
 import { useSnackbarMessage } from '~/compositions/snackbar'
 import 'firebase/auth'
 
@@ -82,6 +89,8 @@ export default defineComponent({
     const isVisible = ref<boolean>(false)
     const router = useRouter()
     const { setMessage } = useSnackbarMessage()
+    const route = useRoute()
+    useMeta(() => ({ title: getPageTitle(route.value) + ' |' }))
 
     const input = reactive<{
       email: string
@@ -106,7 +115,7 @@ export default defineComponent({
       } catch (e) {
         if (e.code) {
           const errorMessage =
-            (AUTH_ERRORS as any)[e.code] ?? DEFAULT_ERROR_MESSAGE
+            (AUTH_ERRORS as FixMeAny)[e.code] ?? DEFAULT_ERROR_MESSAGE
           setMessage({ content: errorMessage, level: 'error' })
         }
       }

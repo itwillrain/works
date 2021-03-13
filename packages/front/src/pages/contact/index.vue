@@ -60,9 +60,12 @@ import {
   ref,
   toRefs,
   useContext,
+  useMeta,
+  useRoute,
 } from '@nuxtjs/composition-api'
-import { DEFAULT_ERROR_MESSAGE, RULES } from '@works/core'
+import { DEFAULT_ERROR_MESSAGE, FixMeAny, RULES } from '@works/core'
 import { useSnackbarMessage } from '~/compositions/snackbar'
+import { getPageTitle } from '~/services/constants/pages'
 interface ContactForm {
   isValid: boolean
   content: string
@@ -76,7 +79,9 @@ export default defineComponent({
   setup() {
     const { $firebase } = useContext()
     const { setMessage } = useSnackbarMessage()
-    const form = ref<any>()
+    const route = useRoute()
+    useMeta(() => ({ title: getPageTitle(route.value) + ' |' }))
+    const form = ref<FixMeAny>()
     const contactForm = reactive<ContactForm>({
       isValid: false,
       isLoading: false,
@@ -111,5 +116,6 @@ export default defineComponent({
       ...toRefs(contactForm),
     }
   },
+  head: {},
 })
 </script>

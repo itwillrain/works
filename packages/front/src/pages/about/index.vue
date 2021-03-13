@@ -34,12 +34,21 @@
   </v-container>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  ref,
+  useMeta,
+  useRoute,
+} from '@nuxtjs/composition-api'
+import { FixMeAny } from '@works/core'
 import { useResume } from '~/compositions/resume'
+import { getPageTitle } from '~/services/constants/pages'
 export default defineComponent({
   setup() {
     const { resume } = useResume('resume/index')
-    const tab = ref<any>(null)
+    const route = useRoute()
+    useMeta(() => ({ title: getPageTitle(route.value) + ' |' }))
+    const tab = ref<FixMeAny>(null)
     return {
       resume,
       tab,

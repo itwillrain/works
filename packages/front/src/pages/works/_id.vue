@@ -58,7 +58,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, useMeta } from '@nuxtjs/composition-api'
 import { formatDate } from '@works/core'
 import { useProject } from '~/compositions/projects'
 export default defineComponent({
@@ -66,8 +66,10 @@ export default defineComponent({
   props: {},
   setup() {
     const { project } = useProject()
+    useMeta(() => ({ title: project.value?.name ?? '' }))
     return { project, formatDate }
   },
+  head: {},
 })
 </script>
 <style lang="scss" module>
