@@ -80,14 +80,12 @@
             <v-list-item-title>{{ menu.title }}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
-      </v-list>
-      <template #append>
         <div class="pa-2">
           <v-btn block depressed color="primary" @click="logout">
             Logout
           </v-btn>
         </div>
-      </template>
+      </v-list>
     </v-navigation-drawer>
   </div>
 </template>
