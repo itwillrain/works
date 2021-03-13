@@ -44,7 +44,7 @@ const config: NuxtConfig = {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: `${envSet.BASE_URL}/img/ogp.png`,
+        content: `${envSet.BASE_URL}/OGP.png`,
       },
       { hid: 'description', name: 'description', content: desc },
       {
