@@ -19,7 +19,7 @@
     </v-img>
 
     <v-list two-line>
-      <v-list-item>
+      <v-list-item href="tel:07042193358">
         <v-list-item-icon>
           <v-icon color="primary"> mdi-phone </v-icon>
         </v-list-item-icon>
@@ -32,7 +32,9 @@
 
       <v-divider></v-divider>
 
-      <v-list-item>
+      <v-list-item
+        href="mailto:info.itwillrain@gmial.com?subject=[portfolio]お問い合わせ "
+      >
         <v-list-item-icon>
           <v-icon color="primary"> mdi-email </v-icon>
         </v-list-item-icon>

@@ -23,6 +23,7 @@ const config: NuxtConfig = {
     titleTemplate: `%s  ${title}`,
     htmlAttrs: {
       lang: 'ja',
+      prefix: 'og: http://ogp.me/ns#',
     },
     meta: [
       { charset: 'utf-8' },
