@@ -14,8 +14,7 @@
     </v-app-bar-title>
 
     <!-- Header Links -->
-    <div v-if="$vuetify.breakpoint.mobile">aaa</div>
-    <ul v-else :class="$style.header__menu" class="d-flex">
+    <ul :class="$style.header__menu" class="d-flex">
       <li v-for="menu in headerMenu" :key="menu.name">
         <n-link :to="{ name: menu.name }">
           {{ menu.title }}
@@ -121,19 +120,22 @@ export default defineComponent({
 <style lang="scss" module>
 .header {
   &__logo {
-    line-height: 1;
     vertical-align: bottom;
     img {
       width: 200px;
     }
   }
   &__menu {
+    padding-left: 1rem !important;
+    line-height: 1;
     li {
       list-style: none;
       margin-right: 1rem;
     }
     a {
+      line-height: 1;
       text-decoration: none;
+      vertical-align: middle;
     }
   }
 }

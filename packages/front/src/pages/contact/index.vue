@@ -2,8 +2,10 @@
   <v-container class="py-10">
     <v-row justify="center">
       <v-col cols="12" md="8">
-        <h2 class="text-center">お問い合わせ</h2>
-        <p>お問い合わせありがとうございます。</p>
+        <h2 class="text-center mb-4">お問い合わせ</h2>
+        <p class="body-2 text-sm-center">
+          お問い合わせありがとうございます。2~3日以内にご返信させていただきます。
+        </p>
       </v-col>
       <v-col cols="12" md="8">
         <v-form ref="form" v-model="isValid" @submit.prevent="submit">
