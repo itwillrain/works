@@ -46,8 +46,9 @@ class MailTemplate {
   public contactMailToAdmin(_case: Case, to = adminMailAddress,  from = functions.config().mail.from): MailDataRequired {
     const subject = `お問い合わせがありました。`;
     const html = `<p>
-    下記内容でお問い合わせがありました。
-    ${_case.email && '電話番号:'  + _case.email + '<br />'}
+    下記内容でお問い合わせがありました。<br />
+    <br />
+    ${_case.email && 'email:'  + _case.email + '<br />'}
     ${_case.phoneNumber && '電話番号:'  + _case.phoneNumber + '<br />'}
     ${_case.company && _case.company.name && '会社名:'  + _case.company.name + '<br />'}
     ${_case.content && 'お問い合わせ内容 :' + _case.content + '<br />' } 
