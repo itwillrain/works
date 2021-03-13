@@ -19,8 +19,9 @@ export const contact = functions.region(functions.config().locale.region).https.
   try {
     const msg = mailTemplate.contactMailToUser(_case, {name: 'it will rain', email})
     const msg2 = mailTemplate.contactMailToAdmin(_case)
-    const [res] = await sgMail.send(msg)
+    const [[res],[res2]] =await Promise.all( [sgMail.send(msg), sgMail.send(msg2)]);
   functions.logger.info(res.toString())
+  functions.logger.info(res2.toString())
   } catch(err) {
     console.log(err)
     throw new functions.https.HttpsError('internal', 'could not send', err)
