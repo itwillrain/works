@@ -35,7 +35,7 @@ export class UserRepo extends BaseRepo {
    * @return  {Promise<FirebaseFirestore.DocumentReference | FirebaseFirestore.WriteResult>} 
    */
   public createUser(user: User): Promise<FirebaseFirestore.DocumentReference | FirebaseFirestore.WriteResult>{
-    return this.create(this.ref, user, User.converter, user.id)
+    return this.create(this.ref, user, User.converter)
   }
 
   /**

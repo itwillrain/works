@@ -62,25 +62,20 @@ export abstract class BaseRepo {
    * @param {firestore.CollectionReference} ref
    * @param {Res} item
    * @param {firestore.FirestoreDataConverter<Res>} converter
-   * @param {string} id
    * @return {Promise<void | FirebaseFirestore.DocumentReference<Res>>}
    */
   protected create<Res>(
       ref: FirebaseFirestore.CollectionReference,
       item: Res,
       converter: FirebaseFirestore.FirestoreDataConverter<Res>,
-      id: string | undefined = undefined
   ): Promise<
-  FirebaseFirestore.WriteResult |
   FirebaseFirestore.DocumentReference<Res>> {
     const data = {
       ...item,
       updatedAt: admin.firestore.FieldValue.serverTimestamp(),
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     };
-    return id ?
-      ref.doc(id).withConverter(converter).set(data) :
-      ref.withConverter(converter).add(data);
+      return ref.withConverter(converter).add(data);
   }
 
     /**

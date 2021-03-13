@@ -43,6 +43,7 @@
               :disabled="!isValid"
               min-width="200"
               rounded
+              :loading="isLoading"
             >
               送信
             </v-btn>
@@ -53,28 +54,60 @@
   </v-container>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api'
-import { RULES } from '@works/core'
+import {
+  defineComponent,
+  reactive,
+  ref,
+  toRefs,
+  useContext,
+} from '@nuxtjs/composition-api'
+import { DEFAULT_ERROR_MESSAGE, RULES } from '@works/core'
+import { useSnackbarMessage } from '~/compositions/snackbar'
 interface ContactForm {
   isValid: boolean
   content: string
   company: {}
   phoneNumber: string
+  isLoading: boolean
 }
 export default defineComponent({
   components: {},
   props: {},
   setup() {
+    const { $firebase } = useContext()
+    const { setMessage } = useSnackbarMessage()
+    const form = ref<any>()
     const contactForm = reactive<ContactForm>({
       isValid: false,
+      isLoading: false,
       content: '',
       company: {
         name: '',
       },
       phoneNumber: '',
     })
+
+    const submit = async () => {
+      contactForm.isLoading = true
+      const contact = $firebase.functions().httpsCallable('v1-callable-contact')
+      try {
+        const { data } = await contact(contactForm)
+        if (data.success) {
+          form.value.reset()
+          setMessage({ level: 'success', content: 'メールを送信しました。' })
+        }
+      } catch (err) {
+        if (err) {
+          setMessage({ level: 'error', content: DEFAULT_ERROR_MESSAGE })
+        }
+      } finally {
+        contactForm.isLoading = false
+      }
+    }
     return {
+      form,
       rules: RULES,
+      submit,
       ...toRefs(contactForm),
     }
   },
