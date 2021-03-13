@@ -18,14 +18,6 @@ export const PAGES: Page[] = [
     layout: 'default',
   },
   {
-    name: 'works',
-    title: 'Works',
-    role: 'authenticated',
-    layout: 'default',
-    showHeaderMenu: true,
-    icon: 'mdi-laptop',
-  },
-  {
     name: 'works-id',
     title: 'Works Detail',
     role: 'authenticated',
