@@ -1,5 +1,5 @@
 <template>
-  <v-container class="py-10 fill-height">
+  <v-container class="py-10">
     <v-row justify="center">
       <v-col cols="12" md="8">
         <h2 class="text-center">お問い合わせ</h2>

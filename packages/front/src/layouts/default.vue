@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <c-s-the-header />
+    <c-s-the-sp-header v-if="$vuetify.breakpoint.mobile" />
+    <c-s-the-pc-header v-else />
     <v-main>
       <nuxt />
       <p-m-base-snackbar />

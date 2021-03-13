@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="py-10">
     <v-row v-if="pickupProjects">
       <v-col>
         <v-row>

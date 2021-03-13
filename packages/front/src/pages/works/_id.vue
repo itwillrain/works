@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container>
+    <v-container class="py-10">
       <v-row class="head">
         <v-col cols="12">
           <h2>{{ project.name }}</h2>

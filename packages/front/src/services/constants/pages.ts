@@ -8,6 +8,7 @@ export interface Page {
   query?: Dictionary<string | (string | null)[]>
   params?: Dictionary<string>
   showHeaderMenu?: boolean
+  icon?: string
 }
 export const PAGES: Page[] = [
   {
@@ -22,6 +23,7 @@ export const PAGES: Page[] = [
     role: 'authenticated',
     layout: 'default',
     showHeaderMenu: true,
+    icon: 'mdi-laptop',
   },
   {
     name: 'works-id',
@@ -35,6 +37,7 @@ export const PAGES: Page[] = [
     role: 'authenticated',
     layout: 'default',
     showHeaderMenu: true,
+    icon: 'mdi-account-circle',
   },
   {
     name: 'contact',
@@ -42,6 +45,7 @@ export const PAGES: Page[] = [
     role: 'authenticated',
     layout: 'default',
     showHeaderMenu: true,
+    icon: 'mdi-forum',
   },
   {
     name: 'login',

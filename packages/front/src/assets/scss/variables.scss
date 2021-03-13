@@ -17,7 +17,7 @@ $material-light: (
 
 $material-dark: (
   'cards': var(--v-background-darken1),
-  'navigation-drawer': var(--v-secondary-base),
+  'navigation-drawer': var(--v-background-darken1),
   'background': var(--v-background-base),
   'app-bar':  transparent,
 );
@@ -28,6 +28,4 @@ body div.v-application .v-card {
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05) !important;
 }
 
-[v-cloak]{
-  display:none;
-}
+$navigation-drawer-mobile-temporary-elevation: 0;

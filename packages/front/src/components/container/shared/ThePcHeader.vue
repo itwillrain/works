@@ -12,7 +12,10 @@
         <p-a-logo></p-a-logo>
       </n-link>
     </v-app-bar-title>
-    <ul :class="$style.header__menu" class="d-flex">
+
+    <!-- Header Links -->
+    <div v-if="$vuetify.breakpoint.mobile">aaa</div>
+    <ul v-else :class="$style.header__menu" class="d-flex">
       <li v-for="menu in headerMenu" :key="menu.name">
         <n-link :to="{ name: menu.name }">
           {{ menu.title }}

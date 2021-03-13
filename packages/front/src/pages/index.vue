@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <v-container>
-      <v-row></v-row>
-    </v-container>
-  </div>
+  <v-container class="py-10">
+    <v-row></v-row>
+  </v-container>
 </template>
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api'

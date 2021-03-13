@@ -1,6 +1,6 @@
 <template>
   <v-app light :class="$style.single">
-    <c-s-the-header></c-s-the-header>
+    <c-s-the-pc-header />
     <v-main>
       <p-m-base-snackbar />
       <nuxt />
