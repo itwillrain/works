@@ -1,6 +1,21 @@
 <template>
   <v-card max-width="375" class="mx-auto">
-    <v-img :src="require('@/assets/img/profile.jpg')" height="300px" dark>
+    <v-img :src="require('@/assets/img/profile.jpg')" aspect-ratio="1">
+      <v-row class="fill-height" no-gutters>
+        <v-col align-self="end">
+          <div class="headline text-center white--text mr-2 mb-2">
+            Takeshi Matsushita
+          </div>
+        </v-col>
+      </v-row>
+      <template #placeholder>
+        <v-row class="fill-height ma-0" align="center" justify="center">
+          <v-progress-circular
+            indeterminate
+            color="grey lighten-5"
+          ></v-progress-circular>
+        </v-row>
+      </template>
     </v-img>
 
     <v-list two-line>
@@ -37,7 +52,7 @@
 
         <v-list-item-content>
           <v-list-item-title>東京都目黒区</v-list-item-title>
-          <v-list-item-subtitle>目黒本町</v-list-item-subtitle>
+          <v-list-item-subtitle></v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-list>
