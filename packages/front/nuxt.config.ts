@@ -1,6 +1,7 @@
 import { NuxtConfig } from '@nuxt/types'
 const environment = process.env.NODE_ENV
 const desc = 'It will rain(Takeshi Matsushita)のPortfolioサイト'
+const title = 'it will rain'
 
 const envSet = require(`./src/config/env.${environment}.ts`)
 const config: NuxtConfig = {
@@ -19,7 +20,7 @@ const config: NuxtConfig = {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s  it will rain',
+    titleTemplate: `%s  ${title}`,
     htmlAttrs: {
       lang: 'ja',
     },
@@ -31,10 +32,13 @@ const config: NuxtConfig = {
         content: 'noindex, nofollow, noarchive',
       },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'og:site_name', property: 'og:site_name', content: title },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: envSet.BASE_URL },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'it will rain',
+        content: title,
       },
       {
         hid: 'og:description',
@@ -46,6 +50,7 @@ const config: NuxtConfig = {
         property: 'og:image',
         content: `${envSet.BASE_URL}/ogp.png` || '',
       },
+      { name: 'twitter:card', content: 'summary' },
       { hid: 'description', name: 'description', content: desc },
       {
         hid: 'msapplication-TileColor',
