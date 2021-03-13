@@ -1,5 +1,5 @@
 module.exports = {
-  BASE_URL: 'itwillrain.com',
+  BASE_URL: 'https://itwillrain.com',
   FIREBASE_API_KEY: 'AIzaSyARranLMi6hHwRa2HYjyUXW0I3cpnTF_Tw',
   FIREBASE_AUTH_DOMAIN: 'itwillrain-portfolio.firebaseapp.com',
   FIREBASE_DATABASE_URL: 'https://itwillrain-portfolio.firebaseio.com',
