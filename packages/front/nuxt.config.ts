@@ -44,11 +44,44 @@ const config: NuxtConfig = {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: `${envSet.BASE_URL}/ogp.png`,
+        content: `${envSet.BASE_URL}/img/ogp.png`,
       },
       { hid: 'description', name: 'description', content: desc },
+      {
+        hid: 'msapplication-TileColor',
+        name: 'msapplication-TileColor',
+        content: '#06b6d4',
+      },
+      {
+        hid: 'theme-color',
+        name: 'theme-color',
+        content: '#ffffff',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'apple-touch-icon, type',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/site.webmanifest',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
