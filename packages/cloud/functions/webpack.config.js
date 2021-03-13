@@ -26,6 +26,7 @@ module.exports = {
   externals: [
     /^firebase.+$/,
     /^@google.+$/,
+    /^@sendgrid.+$/,
     nodeExternals({
       allowlist: [/^@works/],
     }),
