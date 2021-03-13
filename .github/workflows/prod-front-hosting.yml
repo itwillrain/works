@@ -36,7 +36,7 @@ jobs:
         run: yarn install
         
       - name: Build Front
-        run: yarn generate:dev:front
+        run: yarn generate:prod:front
         
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
