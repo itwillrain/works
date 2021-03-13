@@ -32,5 +32,6 @@ export default defineNuxtPlugin(async ({ $config }, inject) => {
     }
   }
 
+  firebase.app().functions('asia-northeast1')
   inject('firebase', firebase)
 })

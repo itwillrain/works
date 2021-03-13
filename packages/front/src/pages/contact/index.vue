@@ -89,10 +89,7 @@ export default defineComponent({
 
     const submit = async () => {
       contactForm.isLoading = true
-      const contact = $firebase
-        .app()
-        .functions('asia-northeast1')
-        .httpsCallable('v1-callable-contact')
+      const contact = $firebase.functions().httpsCallable('v1-callable-contact')
       try {
         const { data } = await contact(contactForm)
         if (data.success) {
