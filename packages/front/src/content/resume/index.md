@@ -24,6 +24,8 @@ connpassや技術書展などで/firebase/typescript/vueなどの勉強会に可
 
 ---
 
+<br />
+
 - 外国人メンバーとのコミュニケーション
 
 <br />
