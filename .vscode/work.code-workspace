@@ -4,9 +4,6 @@
 			"path": "../packages/front"
 		},
 		{
-			"path": "../packages/admin"
-		},
-		{
 			"path": "../packages/core"
 		},
 		{
