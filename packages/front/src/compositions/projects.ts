@@ -1,6 +1,54 @@
 import firebase from 'firebase/app'
-import { ref, useAsync, useRoute } from '@nuxtjs/composition-api'
+import {
+  ref,
+  useAsync,
+  useRoute,
+  reactive,
+  toRefs,
+} from '@nuxtjs/composition-api'
+import { StateChanger } from 'vue-infinite-loading'
 import { ProjectRepo, Project } from '~/domain'
+
+export const useProjects = () => {
+  const projectRepo = new ProjectRepo(firebase.firestore())
+
+  const projectSet = reactive<{
+    hasMore: boolean
+    projects: Project[]
+    last: Project | undefined
+  }>({
+    hasMore: false,
+    projects: [],
+    last: undefined,
+  })
+
+  const fetchProjects = async () => {
+    const {
+      hasMore: _hasMore,
+      projects: _projects,
+      last: _last,
+    } = projectSet.last
+      ? await projectRepo.getProjectsWithHasMore(projectSet.last)
+      : await projectRepo.getProjectsWithHasMore()
+
+    projectSet.hasMore = _hasMore
+    projectSet.projects = [...projectSet.projects, ..._projects]
+    projectSet.last = _last
+  }
+
+  const infiniteHandler = async ($state: StateChanger) => {
+    await fetchProjects()
+    if (projectSet.hasMore) {
+      $state.loaded()
+      console.log('load more')
+    } else {
+      $state.complete()
+      console.log('done')
+    }
+  }
+  return { ...toRefs(projectSet), fetchProjects, infiniteHandler }
+}
+
 /**
  * Pickup Project
  * @returns
@@ -9,13 +57,16 @@ export const usePickupProjects = () => {
   const projectRepo = new ProjectRepo(firebase.firestore())
   const pickupProjects = ref<Project[]>([])
 
-  const fetchPickupProjects = async () =>
-    (pickupProjects.value = await projectRepo.getPickupProjects())
+  const fetchPickupProjects = async () => await projectRepo.getPickupProjects()
 
   useAsync(async () => (pickupProjects.value = await fetchPickupProjects()))
   return { pickupProjects, fetchPickupProjects }
 }
 
+/**
+ * Project
+ * @returns
+ */
 export const useProject = () => {
   const route = useRoute()
   const { id } = route.value.params

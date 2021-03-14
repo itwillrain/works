@@ -12,10 +12,6 @@ const config: NuxtConfig = {
   env: envSet,
   target: 'static',
 
-  server: {
-    port: 8018,
-  },
-
   publicRuntimeConfig: {
     ENVIRONMENT: environment,
     DESCRIPTION: desc,
@@ -102,6 +98,7 @@ const config: NuxtConfig = {
     '@/plugins/firebase',
     '@plugins/firebase-auth',
     '@plugins/message',
+    '@plugins/infinite-loading',
     '@plugins/dark-mode',
   ],
 
