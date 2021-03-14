@@ -17,7 +17,7 @@ export default defineNuxtPlugin(async ({ $config }, inject) => {
     measurementId: process.env.FIREBASE_MEASUREMENT_ID,
   })
 
-  if ($config.ENVIRONMENT === 'local' && location.host === 'localhost:8018') {
+  if ($config.ENVIRONMENT === 'local' && location.host === 'localhost:3000') {
     // local開発時のエミュレータ対応
     const localhost = await fetch('http://localhost:8080').catch(
       () => undefined
