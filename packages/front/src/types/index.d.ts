@@ -6,8 +6,6 @@ import { User } from '../domain/users/model'
 export interface InjectedByPlugin {
   $currentUser: Ref<User | null>
   $firebase: typeof firebase
-  $colorMode: any
-  $vuetify: any
 }
 
 declare module '@nuxt/types' {
