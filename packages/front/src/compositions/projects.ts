@@ -9,6 +9,10 @@ import {
 import { StateChanger } from 'vue-infinite-loading'
 import { ProjectRepo, Project } from '~/domain'
 
+/**
+ * Project list
+ * @returns
+ */
 export const useProjects = () => {
   const projectRepo = new ProjectRepo(firebase.firestore())
 
@@ -40,10 +44,8 @@ export const useProjects = () => {
     await fetchProjects()
     if (projectSet.hasMore) {
       $state.loaded()
-      console.log('load more')
     } else {
       $state.complete()
-      console.log('done')
     }
   }
   return { ...toRefs(projectSet), fetchProjects, infiniteHandler }
