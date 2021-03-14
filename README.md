@@ -4,7 +4,6 @@
 
 - Packages
   - front: フロントアプリケーション
-  - admin: 管理側
   - function: cloud functions
   - core: 共通のinterfaceなど
 
