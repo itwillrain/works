@@ -20,8 +20,5 @@
     "deploy:prod:hosting:front": " firebase deploy --only hosting:front -P default",
     "deploy:prod:functions": "firebase deploy --only functions -P dev",
     "start:emu": "firebase emulators:start --import=./data/develop --export-on-exit=./data/develop"
-  },
-  "dependencies": {
-    "firebase-tools": "^9.4.0"
   }
 }
