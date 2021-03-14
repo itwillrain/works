@@ -66,7 +66,7 @@
     </v-app-bar>
 
     <!-- Drawer -->
-    <v-navigation-drawer v-model="drawer" absolute temporary app>
+    <v-navigation-drawer v-model="drawer" temporary app>
       <v-list nav dense>
         <v-list-item-group active-class="primary--text">
           <v-list-item
