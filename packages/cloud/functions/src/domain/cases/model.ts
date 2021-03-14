@@ -11,6 +11,7 @@ export class Case implements ICase {
   readonly content!: string
   readonly company!: { name:string}
   readonly phoneNumber!: string 
+  readonly PIC!: string
   readonly createdAt!: Timestamp
   readonly updatedAt!: Timestamp
   readonly id!: string
@@ -33,6 +34,7 @@ export class Case implements ICase {
     return {
       email: data.email ?? '',
       content: data.content ?? '',
+      PIC: data.PIC ??  '',
       company: data.company ?? {name: ''},
       phoneNumber: data.phoneNumber ?? '',
       updatedAt: data.updatedAt ?? null,
@@ -54,6 +56,7 @@ export class Case implements ICase {
         content: data.content,
         company: data.company,
         phoneNumber: data.phoneNumber,
+        PIC: data.PIC,
         updatedAt: data.updatedAt,
         createdAt: data.createdAt,
       };

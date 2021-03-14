@@ -12,6 +12,10 @@ const config: NuxtConfig = {
   env: envSet,
   target: 'static',
 
+  server: {
+    port: 8018,
+  },
+
   publicRuntimeConfig: {
     ENVIRONMENT: environment,
     DESCRIPTION: desc,

@@ -5,7 +5,7 @@
       height="60"
       flat
       app
-      class="header"
+      :class="$style.header"
       hide-on-scroll
     >
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>

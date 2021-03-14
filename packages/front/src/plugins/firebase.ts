@@ -17,7 +17,7 @@ export default defineNuxtPlugin(async ({ $config }, inject) => {
     measurementId: process.env.FIREBASE_MEASUREMENT_ID,
   })
 
-  if ($config.ENVIRONMENT === 'local' && location.host === 'localhost:3000') {
+  if ($config.ENVIRONMENT === 'local' && location.host === 'localhost:8018') {
     // local開発時のエミュレータ対応
     const localhost = await fetch('http://localhost:8080').catch(
       () => undefined
@@ -27,11 +27,10 @@ export default defineNuxtPlugin(async ({ $config }, inject) => {
         host: 'localhost:8080',
         ssl: false,
       })
-      firebase.functions().useEmulator('localhost', 5001)
+      firebase.app().functions('asia-northeast1').useEmulator('localhost', 5001)
       firebase.auth().useEmulator('http://localhost:9099/')
     }
   }
 
-  firebase.app().functions('asia-northeast1')
   inject('firebase', firebase)
 })

@@ -23,13 +23,15 @@ class MailTemplate {
    */
   public contactMailToUser(_case: Case, to:EmailData |EmailData[],  from = fromMailAddress): MailDataRequired {
     const subject = `お問い合わせありがとうございます。`;
-    const html = `<p>
+    const html = `
+    ${_case.PIC &&  _case.PIC + '様' }
+    <p>
     下記内容にてお問い合わせを承りました。<br />
     通常2~3日以内に返信させていただきます。<br />
     <br />
-    ${_case.phoneNumber && '電話番号:'  + _case.phoneNumber + '<br />'}
-    ${_case.company && _case.company.name && '会社名:'  + _case.company.name + '<br />'}
-    ${_case.content && 'お問い合わせ内容 :' + _case.content + '<br />' } 
+    ${_case.phoneNumber && '電話番号: '  + _case.phoneNumber}<br />
+    ${_case.company && _case.company.name && '会社名 :'  + _case.company.name} <br />
+    ${_case.content && 'お問い合わせ内容 :' + _case.content} <br />
     </p>
     <br />
     ${SIGNATURE}`
@@ -48,10 +50,11 @@ class MailTemplate {
     const html = `<p>
     下記内容でお問い合わせがありました。<br />
     <br />
-    ${_case.email && 'email:'  + _case.email + '<br />'}
-    ${_case.phoneNumber && '電話番号:'  + _case.phoneNumber + '<br />'}
-    ${_case.company && _case.company.name && '会社名:'  + _case.company.name + '<br />'}
-    ${_case.content && 'お問い合わせ内容 :' + _case.content + '<br />' } 
+    ${_case.PIC &&  '担当者: ' + _case.PIC }<br />
+    ${_case.email && 'email: '  + _case.email} <br />
+    ${_case.phoneNumber && '電話番号: '  + _case.phoneNumber}<br />
+    ${_case.company && _case.company.name && '会社名: '  + _case.company.name}<br />
+    ${_case.content && 'お問い合わせ内容: ' + _case.content} <br />
     </p>
     <br />
     ${SIGNATURE}`

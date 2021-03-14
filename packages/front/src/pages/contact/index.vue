@@ -12,14 +12,29 @@
           <v-row>
             <v-col cols="12" class="py-0">
               <v-text-field
-                v-model="company.name"
+                v-model.trim="email"
+                label="email"
+                :rules="[rules.required, rules.email]"
+                outlined
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" class="py-0">
+              <v-text-field
+                v-model.trim="company.name"
                 label="会社名"
                 outlined
               ></v-text-field>
             </v-col>
             <v-col cols="12" class="py-0">
               <v-text-field
-                v-model="phoneNumber"
+                v-model.trim="PIC"
+                label="担当者"
+                outlined
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" class="py-0">
+              <v-text-field
+                v-model.trim="phoneNumber"
                 label="電話番号"
                 :rules="[rules.phone]"
                 outlined
@@ -27,7 +42,7 @@
             </v-col>
             <v-col cols="12" class="py-0">
               <v-textarea
-                v-model="content"
+                v-model.trim="content"
                 counter="200"
                 :rules="[rules.max(200, content), rules.required]"
                 label="お問い合わせ内容"
@@ -69,6 +84,8 @@ import { getPageTitle } from '~/services/constants/pages'
 interface ContactForm {
   isValid: boolean
   content: string
+  email: string
+  PIC: string
   company: {}
   phoneNumber: string
   isLoading: boolean
@@ -86,6 +103,8 @@ export default defineComponent({
       isValid: false,
       isLoading: false,
       content: '',
+      email: '',
+      PIC: '',
       company: {
         name: '',
       },
@@ -94,12 +113,15 @@ export default defineComponent({
 
     const submit = async () => {
       contactForm.isLoading = true
-      const contact = $firebase.functions().httpsCallable('v1-callable-contact')
+      const contact = $firebase
+        .app()
+        .functions('asia-northeast1')
+        .httpsCallable('v1-callable-contact')
       try {
         const { data } = await contact(contactForm)
         if (data.success) {
-          form.value.reset()
           setMessage({ level: 'success', content: 'メールを送信しました。' })
+          form.value.reset()
         }
       } catch (err) {
         if (err) {
