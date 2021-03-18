@@ -1,13 +1,17 @@
 {
+  "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
+    "rootDir": ".",
+    "outDir": "lib",
     "esModuleInterop": true,
-    "declaration": true,
-    "outDir": "./lib",
-    "strict": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
   },
+  "compileOnSave": true,
+  "include": [
+    "src"
+  ],
   "exclude": [
-    "./lib"
+    "lib"
   ]
 }
