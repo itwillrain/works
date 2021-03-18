@@ -12,6 +12,8 @@
     "src"
   ],
   "exclude": [
-    "lib"
+    "lib",
+    "**/test/**/*",
+    "__tests__"
   ]
 }

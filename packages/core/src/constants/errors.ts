@@ -10,14 +10,14 @@ export const AUTH_ERRORS = {
   'auth/requires-recent-login': '再ログインしてください。',
   'auth/user-token-expired': '再ログインしてください。',
   'auth/invalid-user-token': '再ログインしてください。',
-};
+}
 
 export const STORAGE_ERRORS = {
   'storage/unknown': '不明なエラーが発生しました。',
-};
+}
 
 export const SECURITY_RULE_ERROR = {
   'permission-denied': '入力値に不備または、アクセス権限がございません。',
-};
+}
 
-export const DEFAULT_ERROR_MESSAGE = 'エラーが発生しました。しばらくたってから再度お試しください。';
+export const DEFAULT_ERROR_MESSAGE = 'エラーが発生しました。しばらくたってから再度お試しください。'

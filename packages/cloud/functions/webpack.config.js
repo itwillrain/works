@@ -21,6 +21,10 @@ module.exports = {
   },
   devtool: 'nosources-source-map',
   resolve: {
+    alias: {
+      '~': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './src'),
+    },
     extensions: ['.ts', '.js', '.json'],
   },
   externals: [

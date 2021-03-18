@@ -1,4 +1,4 @@
-import {Timestamp,  IUser} from "@works/core";
+import {Timestamp, IUser} from '@works/core'
 /**
  * User Class
  *
@@ -18,7 +18,7 @@ export class User implements IUser {
    * @param {string} id
    */
   constructor(init: Partial<IUser>, id: string) {
-    Object.assign(this, {...this.map(init), id});
+    Object.assign(this, {...this.map(init), id})
   }
 
   /**
@@ -31,7 +31,7 @@ export class User implements IUser {
       email: data.email ?? '',
       updatedAt: data.updatedAt ?? null,
       createdAt: data.createdAt ?? null,
-    };
+    }
   }
 
   /**
@@ -47,11 +47,11 @@ export class User implements IUser {
         email: data.email,
         updatedAt: data.updatedAt,
         createdAt: data.createdAt,
-      };
+      }
     },
     fromFirestore(snap: FirebaseFirestore.QueryDocumentSnapshot<User>): User {
-      const data = snap.data();
-      return new User(data, snap.id);
+      const data = snap.data()
+      return new User(data, snap.id)
     },
   }
 }
