@@ -10,10 +10,7 @@
             <v-img :src="project.displayImage" :aspect-ratio="16 / 9">
               <template #placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5"
-                  ></v-progress-circular>
+                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
                 </v-row> </template
             ></v-img>
           </a>
@@ -35,12 +32,7 @@
           <v-col>
             <h3>使用したスキル・ツール</h3>
             <div>
-              <v-chip
-                v-for="(skill, idx) in project.skills"
-                :key="idx"
-                class="ma-2"
-                color="primary"
-              >
+              <v-chip v-for="(skill, idx) in project.skills" :key="idx" class="ma-2" color="primary">
                 {{ skill }}
               </v-chip>
             </div>

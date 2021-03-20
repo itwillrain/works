@@ -1,12 +1,5 @@
 <template>
-  <v-app-bar
-    v-if="$currentUser.value"
-    height="60"
-    flat
-    app
-    class="header"
-    hide-on-scroll
-  >
+  <v-app-bar v-if="$currentUser.value" height="60" flat app class="header" hide-on-scroll>
     <v-app-bar-title>
       <n-link :to="{ name: 'index' }" :class="$style.header__logo">
         <p-a-logo></p-a-logo>
@@ -24,32 +17,11 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn
-      text
-      icon
-      small
-      class="mr-2"
-      @click="
-        $colorMode.value === 'dark'
-          ? ($colorMode.preference = 'light')
-          : ($colorMode.preference = 'dark')
-      "
-    >
-      <v-icon>{{
-        $colorMode.value === 'dark'
-          ? 'mdi-brightness-2'
-          : 'mdi-white-balance-sunny'
-      }}</v-icon>
+    <v-btn text icon small class="mr-2" @click="$colorMode.value === 'dark' ? ($colorMode.preference = 'light') : ($colorMode.preference = 'dark')">
+      <v-icon>{{ $colorMode.value === 'dark' ? 'mdi-brightness-2' : 'mdi-white-balance-sunny' }}</v-icon>
     </v-btn>
 
-    <v-btn
-      text
-      icon
-      small
-      class="mr-2"
-      href="https://github.com/itwillrain/works"
-      target="_blank"
-    >
+    <v-btn text icon small class="mr-2" href="https://github.com/itwillrain/works" target="_blank">
       <v-icon> mdi-github </v-icon>
     </v-btn>
 
@@ -62,9 +34,7 @@
       <template #activator="{ on }">
         <v-btn icon class="mr-2" v-on="on">
           <v-avatar color="primary" size="42">
-            <span class="white--text headline">{{
-              initialUpperCase($currentUser.value.email)
-            }}</span>
+            <span class="white--text headline">{{ initialUpperCase($currentUser.value.email) }}</span>
           </v-avatar>
         </v-btn>
       </template>
@@ -79,14 +49,7 @@
   </v-app-bar>
 </template>
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  toRefs,
-  useContext,
-  useRouter,
-  watchEffect,
-} from '@nuxtjs/composition-api'
+import { defineComponent, reactive, toRefs, useContext, useRouter, watchEffect } from '@nuxtjs/composition-api'
 import { initialUpperCase } from '@works/core'
 import { signOut } from '~/compositions/auth'
 import { headerMenu, Page } from '~/services/constants/pages'

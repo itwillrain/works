@@ -34,12 +34,7 @@
   </v-container>
 </template>
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  useMeta,
-  useRoute,
-} from '@nuxtjs/composition-api'
+import { defineComponent, ref, useMeta, useRoute } from '@nuxtjs/composition-api'
 import { FixMeAny } from '@works/core'
 import { useResume } from '~/compositions/resume'
 import { getPageTitle } from '~/services/constants/pages'

@@ -3,17 +3,12 @@
     <v-img :src="require('@/assets/img/profile.jpg')" aspect-ratio="1">
       <v-row class="fill-height" no-gutters>
         <v-col align-self="end">
-          <div class="headline text-center white--text mr-2 mb-2">
-            Takeshi Matsushita
-          </div>
+          <div class="headline text-center white--text mr-2 mb-2">Takeshi Matsushita</div>
         </v-col>
       </v-row>
       <template #placeholder>
         <v-row class="fill-height ma-0" align="center" justify="center">
-          <v-progress-circular
-            indeterminate
-            color="grey lighten-5"
-          ></v-progress-circular>
+          <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
         </v-row>
       </template>
     </v-img>
@@ -32,9 +27,7 @@
 
       <v-divider></v-divider>
 
-      <v-list-item
-        href="mailto:info.itwillrain@gmial.com?subject=[portfolio]お問い合わせ "
-      >
+      <v-list-item href="mailto:info.itwillrain@gmial.com?subject=[portfolio]お問い合わせ ">
         <v-list-item-icon>
           <v-icon color="primary"> mdi-email </v-icon>
         </v-list-item-icon>

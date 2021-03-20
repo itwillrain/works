@@ -1,16 +1,8 @@
 <template>
-  <v-snackbar
-    v-if="hasMessage"
-    v-model="hasMessage"
-    :vertical="vertical"
-    :color="message.level"
-    text
-  >
+  <v-snackbar v-if="hasMessage" v-model="hasMessage" :vertical="vertical" :color="message.level" text>
     {{ message.content }}
     <template #action="{ attrs }">
-      <v-btn :color="message.level" text v-bind="attrs" @click="resetMessage">
-        閉じる
-      </v-btn>
+      <v-btn :color="message.level" text v-bind="attrs" @click="resetMessage"> 閉じる </v-btn>
     </template>
   </v-snackbar>
 </template>

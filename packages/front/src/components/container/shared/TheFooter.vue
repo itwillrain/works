@@ -1,8 +1,6 @@
 <template>
   <v-footer absolute app>
-    <small :class="$style.copy">
-      &copy;itwillrain {{ new Date().getFullYear() }}
-    </small>
+    <small :class="$style.copy"> &copy;itwillrain {{ new Date().getFullYear() }} </small>
   </v-footer>
 </template>
 <script lang="ts">

@@ -12,13 +12,7 @@
             <v-form v-model="isValid" @submit.prevent="submit">
               <v-row>
                 <v-col cols="12" class="pb-0">
-                  <v-text-field
-                    v-model.trim="email"
-                    dense
-                    :rules="[rules.required, rules.email]"
-                    outlined
-                    label="Email"
-                  />
+                  <v-text-field v-model.trim="email" dense :rules="[rules.required, rules.email]" outlined label="Email" />
                 </v-col>
                 <v-col cols="12" class="py-0">
                   <v-text-field
@@ -33,23 +27,10 @@
                   />
                 </v-col>
                 <v-col cols="12" class="py-0">
-                  <v-checkbox
-                    v-model="rememberMe"
-                    label="Remember Me"
-                    class="ma-0 pa-0"
-                  >
-                  </v-checkbox>
+                  <v-checkbox v-model="rememberMe" label="Remember Me" class="ma-0 pa-0"> </v-checkbox>
                 </v-col>
                 <v-col>
-                  <v-btn
-                    type="submit"
-                    depressed
-                    block
-                    color="primary"
-                    :disabled="!isValid"
-                  >
-                    login
-                  </v-btn>
+                  <v-btn type="submit" depressed block color="primary" :disabled="!isValid"> login </v-btn>
                 </v-col>
               </v-row>
             </v-form>
@@ -60,21 +41,8 @@
   </v-container>
 </template>
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  toRefs,
-  ref,
-  useRouter,
-  useMeta,
-  useRoute,
-} from '@nuxtjs/composition-api'
-import {
-  RULES,
-  AUTH_ERRORS,
-  DEFAULT_ERROR_MESSAGE,
-  FixMeAny,
-} from '@works/core'
+import { defineComponent, reactive, toRefs, ref, useRouter, useMeta, useRoute } from '@nuxtjs/composition-api'
+import { RULES, AUTH_ERRORS, DEFAULT_ERROR_MESSAGE, FixMeAny } from '@works/core'
 import firebase from 'firebase/app'
 import { signIn } from '~/compositions/auth'
 import { getPageTitle, setLayout } from '~/services/constants/pages'
@@ -106,16 +74,13 @@ export default defineComponent({
      */
     const submit = async () => {
       try {
-        const persistence: keyof typeof firebase.auth.Auth.Persistence = input.rememberMe
-          ? 'LOCAL'
-          : 'SESSION'
+        const persistence: keyof typeof firebase.auth.Auth.Persistence = input.rememberMe ? 'LOCAL' : 'SESSION'
 
         await signIn(input.email, input.password, persistence)
         router.push({ name: 'index' })
       } catch (e) {
         if (e.code) {
-          const errorMessage =
-            (AUTH_ERRORS as FixMeAny)[e.code] ?? DEFAULT_ERROR_MESSAGE
+          const errorMessage = (AUTH_ERRORS as FixMeAny)[e.code] ?? DEFAULT_ERROR_MESSAGE
           setMessage({ content: errorMessage, level: 'error' })
         }
       }
