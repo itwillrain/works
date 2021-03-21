@@ -21,7 +21,6 @@
     "postinstall": "npm run build",
     "lint": "gts lint",
     "clean": "gts clean",
-    "compile": "tsc",
     "fix": "gts fix",
     "posttest": "yarn run lint"
   },
