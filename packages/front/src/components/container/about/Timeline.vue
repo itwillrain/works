@@ -1,11 +1,6 @@
 <template>
   <v-timeline dense clipped>
-    <v-timeline-item
-      v-for="(year, i) in years"
-      :key="i"
-      :color="year.color"
-      small
-    >
+    <v-timeline-item v-for="(year, i) in years" :key="i" :color="year.color" small>
       <div class="py-4">
         <h3 :class="`font-weight-500 mb-4 ${year.color}--text`">
           {{ year.year }}

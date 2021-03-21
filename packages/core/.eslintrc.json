@@ -1,0 +1,15 @@
+{
+  "extends": ["./node_modules/gts/"],
+  "ignorePatterns":[
+      "/lib/**/*"
+  ],
+  "rules": {
+    "node/no-extraneous-import" : "off",
+    "node/no-unpublished-import": "off",
+    "no-process-exit": "off",
+    "node/no-extraneous-require" : "off",
+    "no-unused-vars": "off",
+    "import/prefer-default-export": "off",
+    "no-prototype-builtins": "off"
+  }
+}

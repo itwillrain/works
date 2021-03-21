@@ -8,13 +8,7 @@
           </v-col>
         </v-row>
         <v-row v-if="projects.length">
-          <v-col
-            v-for="(project, idx) in projects"
-            :key="idx"
-            cols="12"
-            sm="6"
-            md="4"
-          >
+          <v-col v-for="(project, idx) in projects" :key="idx" cols="12" sm="6" md="4">
             <p-m-project-card :project="project"></p-m-project-card>
           </v-col>
         </v-row>

@@ -1,5 +1,5 @@
 export const COLLECTION_NAME = {
   users: 'users',
   projects: 'projects',
-  cases: 'cases'
+  cases: 'cases',
 } as const

@@ -1,4 +1,4 @@
-import { CommonProperties, DocumentReference } from '../../types/common-property';
+import {CommonProperties, DocumentReference} from '../../types/common-property'
 
 export type Role = 'owner' | 'systemAdmin' | 'user'
 

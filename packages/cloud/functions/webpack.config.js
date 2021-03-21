@@ -7,7 +7,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
@@ -21,7 +21,11 @@ module.exports = {
   },
   devtool: 'nosources-source-map',
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.json'],
+    alias: {
+      '~': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './src'),
+    },
+    extensions: ['.ts', '.js', '.json'],
   },
   externals: [
     /^firebase.+$/,

@@ -1,1 +1,1 @@
-export * from "./onCreate";
+export * from './onCreate'
