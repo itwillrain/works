@@ -59,9 +59,7 @@ export const PAGES: Page[] = [
  * @return {boolean}
  */
 export function isUnauthenticatedOnly(route: Route): boolean {
-  return PAGES.filter((page) => page.role === 'unauthenticated').some(
-    (page) => page.name === route.name
-  )
+  return PAGES.filter((page) => page.role === 'unauthenticated').some((page) => page.name === route.name)
 }
 /**
  * 認証ページ判定
@@ -69,9 +67,7 @@ export function isUnauthenticatedOnly(route: Route): boolean {
  * @return {boolean}
  */
 export function isAuthenticatedOnly(route: Route): boolean {
-  return PAGES.filter((page) => page.role === 'authenticated').some(
-    (page) => page.name === route.name
-  )
+  return PAGES.filter((page) => page.role === 'authenticated').some((page) => page.name === route.name)
 }
 
 /**
@@ -80,9 +76,7 @@ export function isAuthenticatedOnly(route: Route): boolean {
  * @return {boolean}
  */
 export function isPublicRoute(route: Route): boolean {
-  return PAGES.filter((page) => page.role === 'public').some(
-    (page) => page.name === route.name
-  )
+  return PAGES.filter((page) => page.role === 'public').some((page) => page.name === route.name)
 }
 
 /**
@@ -116,11 +110,7 @@ const paramFilter = (page: Page): ((location: Location) => Location) => {
  * @param {Page} page
  * @return {() => Location}
  */
-export const generateLocation = (page: Page) => (location: Location) =>
-  [paramFilter(page), queryFilter(page)].reduce(
-    (location, filter) => filter(location),
-    location
-  )
+export const generateLocation = (page: Page) => (location: Location) => [paramFilter(page), queryFilter(page)].reduce((location, filter) => filter(location), location)
 
 /**
  * Set Layout

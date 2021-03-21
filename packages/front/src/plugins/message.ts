@@ -1,9 +1,4 @@
-import {
-  defineNuxtPlugin,
-  onGlobalSetup,
-  provide,
-  ref,
-} from '@nuxtjs/composition-api'
+import { defineNuxtPlugin, onGlobalSetup, provide, ref } from '@nuxtjs/composition-api'
 import { SnackbarMessage, SnackbarMessageKey } from '../compositions/snackbar'
 
 export default defineNuxtPlugin((_ctx, inject) => {

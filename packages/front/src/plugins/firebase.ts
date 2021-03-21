@@ -19,9 +19,7 @@ export default defineNuxtPlugin(async ({ $config }, inject) => {
 
   if ($config.ENVIRONMENT === 'local' && location.host === 'localhost:3000') {
     // local開発時のエミュレータ対応
-    const localhost = await fetch('http://localhost:8080').catch(
-      () => undefined
-    )
+    const localhost = await fetch('http://localhost:8080').catch(() => undefined)
     if (localhost && localhost.status === 200) {
       firebase.firestore().settings({
         host: 'localhost:8080',

@@ -1,10 +1,4 @@
-import {
-  defineNuxtPlugin,
-  onGlobalSetup,
-  onUnmounted,
-  provide,
-  ref,
-} from '@nuxtjs/composition-api'
+import { defineNuxtPlugin, onGlobalSetup, onUnmounted, provide, ref } from '@nuxtjs/composition-api'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import { CurrentUser } from '~/compositions/auth'

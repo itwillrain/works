@@ -9,9 +9,7 @@ export interface SnackbarMessage {
   code?: number
 }
 
-export const SnackbarMessageKey: InjectionKey<Ref<SnackbarMessage>> = Symbol(
-  'SnackbarMessage'
-)
+export const SnackbarMessageKey: InjectionKey<Ref<SnackbarMessage>> = Symbol('SnackbarMessage')
 
 export const useSnackbarMessage = () => {
   const message = inject(SnackbarMessageKey)

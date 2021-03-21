@@ -16,7 +16,3 @@ declare module '@nuxt/types' {
 declare module 'vue/types/vue' {
   interface Vue extends InjectedByPlugin {}
 }
-
-declare module 'vuex/types/index' {
-  interface Store<S> extends InjectedByPlugin {}
-}

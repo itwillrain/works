@@ -1,11 +1,5 @@
 import firebase from 'firebase/app'
-import {
-  ref,
-  useAsync,
-  useRoute,
-  reactive,
-  toRefs,
-} from '@nuxtjs/composition-api'
+import { ref, useAsync, useRoute, reactive, toRefs } from '@nuxtjs/composition-api'
 import { StateChanger } from 'vue-infinite-loading'
 import { ProjectRepo, Project } from '~/domain'
 
@@ -27,13 +21,7 @@ export const useProjects = () => {
   })
 
   const fetchProjects = async () => {
-    const {
-      hasMore: _hasMore,
-      projects: _projects,
-      last: _last,
-    } = projectSet.last
-      ? await projectRepo.getProjectsWithHasMore(projectSet.last)
-      : await projectRepo.getProjectsWithHasMore()
+    const { hasMore: _hasMore, projects: _projects, last: _last } = projectSet.last ? await projectRepo.getProjectsWithHasMore(projectSet.last) : await projectRepo.getProjectsWithHasMore()
 
     projectSet.hasMore = _hasMore
     projectSet.projects = [...projectSet.projects, ..._projects]
@@ -75,8 +63,7 @@ export const useProject = () => {
   const projectRepo = new ProjectRepo(firebase.firestore())
   const project = ref<Project | undefined>(new Project({}, ''))
 
-  const fetchProject = async (id: string) =>
-    (project.value = await projectRepo.getProject(id))
+  const fetchProject = async (id: string) => (project.value = await projectRepo.getProject(id))
   useAsync(async () => (project.value = await fetchProject(id)))
   return { project, fetchProject }
 }
