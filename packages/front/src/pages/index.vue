@@ -7,18 +7,23 @@
             <h2 class="text-center mb-4">Greeting</h2>
             <p class="text-center">この度はサイトをご覧いただきありがとうございます。</p>
 
-            <h3>このポートフォリオの構成について</h3>
-            <v-divider class="mb-2" />
-            <ul class="mb-4">
-              <li>firebase</li>
-              <li>nuxt + composition API</li>
-              <li>typescript</li>
-              <li>lerna: monorepo</li>
-            </ul>
+            <div class="mb-10">
+              <h3>このポートフォリオの構成について</h3>
+              <v-divider class="mb-2" />
+              <ul class="mb-4">
+                <li>firebase</li>
+                <li>nuxt + composition API</li>
+                <li>typescript</li>
+                <li>lerna: monorepo</li>
+              </ul>
+              <v-btn href="https://github.com/itwillrain/works" rel="noopener" color="info" target="_blank"><v-icon left> mdi-github </v-icon>githubレポジトリ</v-btn>
+            </div>
 
-            <h3>制作期間について</h3>
-            <v-divider class="mb-2" />
-            <span>3月11日</span>~<span>3月21日</span>
+            <div>
+              <h3>制作期間について</h3>
+              <v-divider class="mb-2" />
+              <span>3月11日</span>~<span>3月21日</span>
+            </div>
           </v-col>
         </v-row>
         <v-row>
