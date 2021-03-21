@@ -26,7 +26,7 @@ connpass や技術書展などで Firebase・Typescript・Vue などの勉強会
 
 <br />
 
--Web アプリケーションの開発
+- Web アプリケーションの開発
 
 - 外国人メンバーとのコミュニケーション
 
