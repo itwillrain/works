@@ -6,7 +6,7 @@
           <h2>{{ project.name }}</h2>
         </v-col>
         <v-col cols="12" class="pb-0">
-          <a :href="project.url" target="_blank" rel="noopener">
+          <a v-if="project.url" :href="project.url" target="_blank" rel="noopener">
             <v-img :src="project.displayImage" :aspect-ratio="16 / 9">
               <template #placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
@@ -14,6 +14,12 @@
                 </v-row> </template
             ></v-img>
           </a>
+          <v-img v-else :src="project.displayImage" :aspect-ratio="16 / 9">
+            <template #placeholder>
+              <v-row class="fill-height ma-0" align="center" justify="center">
+                <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+              </v-row> </template
+          ></v-img>
         </v-col>
       </v-row>
     </v-container>
@@ -38,10 +44,10 @@
             </div>
           </v-col>
         </v-row>
-        <v-row class="">
+        <v-row :class="$style.content">
           <v-col>
             <h3>概要</h3>
-            <p>{{ project.desc }}</p>
+            <p v-html="$sanitize(project.desc)"></p>
           </v-col>
         </v-row>
       </v-container>
@@ -69,5 +75,9 @@ export default defineComponent({
   margin-top: -6rem;
   padding-top: 6rem;
   background-color: var(--v-background-darken1);
+}
+content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 </style>

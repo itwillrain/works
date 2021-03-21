@@ -94,13 +94,7 @@ const config: NuxtConfig = {
   css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '@/plugins/firebase',
-    '@plugins/firebase-auth',
-    '@plugins/message',
-    '@plugins/infinite-loading',
-    '@plugins/dark-mode',
-  ],
+  plugins: ['@/plugins/firebase', '@plugins/firebase-auth', '@plugins/message', '@plugins/infinite-loading', '@plugins/dark-mode', '@plugins/sanitize-html'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
