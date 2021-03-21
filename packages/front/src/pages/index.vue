@@ -4,6 +4,28 @@
       <v-col>
         <v-row>
           <v-col cols="12">
+            <h2 class="text-center mb-4">Greeting</h2>
+            <p class="text-center">この度はサイトをご覧いただきありがとうございます。</p>
+
+            <h3>このポートフォリオの構成について</h3>
+            <v-divider class="mb-2" />
+            <ul class="mb-4">
+              <li>firebase</li>
+              <li>nuxt + composition API</li>
+              <li>typescript</li>
+              <li>lerna: monorepo</li>
+            </ul>
+
+            <h3>制作期間について</h3>
+            <v-divider class="mb-2" />
+            <span>3月11日</span>~<span>3月21日</span>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col></v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
             <h2 class="text-center">Works</h2>
           </v-col>
         </v-row>
