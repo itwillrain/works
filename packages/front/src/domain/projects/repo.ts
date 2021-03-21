@@ -35,7 +35,7 @@ export class ProjectRepo extends BaseRepo {
    * @returns { Promise<Project[]>}
    */
   public getProjects(): Promise<Project[]> {
-    const query = this.ref.orderBy('createdAt', 'desc')
+    const query = this.ref.where('isPublished', '!=', null).orderBy('orderIndex', 'asc').where('isPublished', '!=', null)
     return this.findByQuery(query, Project.converter)
   }
 
@@ -52,12 +52,9 @@ export class ProjectRepo extends BaseRepo {
     last: Project | undefined
   }> {
     const limit = step + 1
-    const baseQuery = this.ref.orderBy('createdAt', 'desc').limit(limit)
-    const query = lastVisible
-      ? baseQuery.startAfter(lastVisible.createdAt)
-      : baseQuery
+    const baseQuery = this.ref.where('isPublished', '==', true).orderBy('orderIndex', 'asc').limit(limit)
+    const query = lastVisible ? baseQuery.startAfter(lastVisible.orderIndex) : baseQuery
     const projects = await this.findByQuery<Project>(query, Project.converter)
-    console.log(projects)
     const hasMore = projects.length === limit
     let last
     if (hasMore) {
@@ -73,10 +70,7 @@ export class ProjectRepo extends BaseRepo {
    * @returns { Promise<Project[]>}
    */
   public getPickupProjects(limit = 5): Promise<Project[]> {
-    const query = this.ref
-      .orderBy('createdAt', 'desc')
-      .where('isPickup', '==', true)
-      .limit(limit)
+    const query = this.ref.orderBy('orderIndex', 'asc').where('isPickup', '==', true).limit(limit)
     return this.findByQuery(query, Project.converter)
   }
 }

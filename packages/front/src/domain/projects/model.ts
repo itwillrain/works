@@ -13,9 +13,11 @@ export class Project implements IProject {
   readonly name!: string
   readonly url!: string
   readonly isPickup!: boolean
+  readonly isPublished!: boolean
   readonly skills!: string[]
   readonly desc!: string
   readonly displayImage!: string
+  readonly orderIndex!: number
   readonly startAt!: Timestamp
   readonly endAt!: Timestamp
   readonly createdAt!: firestore.Timestamp
@@ -39,7 +41,9 @@ export class Project implements IProject {
     return {
       id: data.id,
       name: data.name ?? '',
+      orderIndex: data.orderIndex ?? 0,
       isPickup: data.isPickup ?? false,
+      isPublished: data.isPublished ?? false,
       url: data.url ?? '',
       skills: data.skills ?? [],
       desc: data.desc ?? '',
@@ -64,9 +68,11 @@ export class Project implements IProject {
         name: data.name,
         url: data.url,
         isPickup: data.isPickup,
+        isPublished: data.isPublished,
         skills: data.skills,
         desc: data.desc,
         displayImage: data.displayImage,
+        orderIndex: data.orderIndex,
         startAt: data.startAt,
         endAt: data.endAt,
         updatedAt: data.updatedAt,
