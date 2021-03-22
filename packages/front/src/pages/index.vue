@@ -13,7 +13,7 @@
               <ul class="mb-4">
                 <li>firebase</li>
                 <li>nuxt + composition API</li>
-                <li>typescript</li>
+                <li>TypeScript</li>
                 <li>lerna: monorepo</li>
               </ul>
               <v-btn href="https://github.com/itwillrain/works" rel="noopener" color="info" target="_blank"><v-icon left> mdi-github </v-icon>githubレポジトリ</v-btn>
