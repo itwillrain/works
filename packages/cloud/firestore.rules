@@ -9,19 +9,11 @@ service cloud.firestore {
     function isUserAuthenticated(userId) {
       return request.auth.uid == userId;
     }
-    match /accounts/{uid} {
-      allow read: if isUserAuthenticated(uid)
-    }
 
     match /users/{uid} {
-      allow read: if  isAuthenticated()
+      allow read: if  isUserAuthenticated(uid)
     }
-    match /buildings/{buildingId} {
-      allow read: if isAuthenticated()
-      allow create: if isAuthenticated()
-      allow update: if isAuthenticated()
-      allow delete: if isAuthenticated()
-    }
+
     match /projects/{project} {
       allow read: if isAuthenticated()
     }
